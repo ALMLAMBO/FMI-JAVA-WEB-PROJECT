@@ -1,10 +1,23 @@
 package bg.fmi.rateuni.models.base;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+import java.util.UUID;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "reviews")
 public class Review {
-    private int id;
+    @Id
+    private UUID id;
     private String comment;
     private String publishedAt;
     private double courseRating;
