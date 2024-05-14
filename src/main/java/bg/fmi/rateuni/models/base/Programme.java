@@ -1,12 +1,11 @@
 package bg.fmi.rateuni.models.base;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -19,4 +18,14 @@ public class Programme {
     private UUID id;
     private String title;
     private String description;
+
+    @ManyToMany (mappedBy = "facultyPrograms")
+    private Set<Faculty> faculties;
+
+    @ManyToMany
+    @JoinTable(name = "programs_disciplines",
+        joinColumns = @JoinColumn(name = "program_id"),
+        inverseJoinColumns = @JoinColumn(name = "discipline_id")
+    )
+    private Set<Discipline> programmeDisciplines;
 }
