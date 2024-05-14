@@ -1,13 +1,13 @@
 package bg.fmi.rateuni.models.base;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.core.SpringVersion;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -22,4 +22,15 @@ public class Faculty {
     private String dean;
     private String address;
 
+    @ManyToMany
+    @JoinTable (name = "faculty_programs",
+    joinColumns = @JoinColumn(name = "faculty_id"),
+    inverseJoinColumns = @JoinColumn(name = "programme_id"))
+    private Set<Programme> facultyPrograms;
+
+    @ManyToMany(mappedBy = "universityFaculties")
+    private Set<University> universities;
+
+    @ManyToMany(mappedBy = "userFaculties")
+    private Set<User> users;
 }

@@ -40,4 +40,7 @@ public class Review {
     
     @ManyToMany(mappedBy = "userReviews")
     private Set<User> users;
+
+    @ManyToMany(mappedBy = "disciplineReviews")
+    private Set<Discipline> disciplines;
 }

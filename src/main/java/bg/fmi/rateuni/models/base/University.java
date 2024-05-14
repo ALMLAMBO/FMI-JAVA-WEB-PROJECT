@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,14 @@ public class University {
     private String name;
     private String rector;
     private String hqAddress;
-    
+
     @ManyToMany(mappedBy = "userUniversities")
     private Set<User> users;
+
+    @ManyToMany
+    @JoinTable(name = "universities_faculties",
+        joinColumns = @JoinColumn(name = "university_id"),
+        inverseJoinColumns = @JoinColumn(name = "faculty_id")
+    )
+    private Set<Faculty> universityFaculties;
 }
