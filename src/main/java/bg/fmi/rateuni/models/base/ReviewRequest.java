@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -21,4 +22,8 @@ public class ReviewRequest {
     
     @Enumerated(EnumType.STRING)
     private RequestStatus status;
+    
+    @ManyToMany(mappedBy = "reviewRequests")
+    private Set<User> users;
+    
 }

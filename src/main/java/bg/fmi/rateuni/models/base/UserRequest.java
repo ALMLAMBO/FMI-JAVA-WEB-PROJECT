@@ -1,14 +1,23 @@
-package bg.fmi.rateuni.models.link;
+package bg.fmi.rateuni.models.base;
 
 import bg.fmi.rateuni.vo.RequestStatus;
-import lombok.Data;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
 public class UserRequest {
-    private int id;
-    private int userId;
+    @Id
+    private UUID id;
+    private UUID userId;
     private String username;
     private String universityName;
     private String facultyName;
