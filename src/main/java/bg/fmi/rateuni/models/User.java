@@ -1,8 +1,7 @@
-package bg.fmi.rateuni.models.base;
+package bg.fmi.rateuni.models;
 
 import bg.fmi.rateuni.vo.UserGender;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,11 +1,9 @@
-package bg.fmi.rateuni.models.base;
+package bg.fmi.rateuni.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.core.SpringVersion;
 
 import java.util.Set;
 import java.util.UUID;

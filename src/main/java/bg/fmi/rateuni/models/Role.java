@@ -1,4 +1,4 @@
-package bg.fmi.rateuni.models.base;
+package bg.fmi.rateuni.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

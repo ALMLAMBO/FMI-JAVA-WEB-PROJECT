@@ -1,9 +1,8 @@
-package bg.fmi.rateuni.models.base;
+package bg.fmi.rateuni.models;
 
 import bg.fmi.rateuni.vo.DisciplineCategory;
 import bg.fmi.rateuni.vo.DisciplineType;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

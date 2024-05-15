@@ -1,4 +1,4 @@
-package bg.fmi.rateuni.models.base;
+package bg.fmi.rateuni.models;
 
 import bg.fmi.rateuni.vo.RequestStatus;
 import jakarta.persistence.*;
