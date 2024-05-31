@@ -2,6 +2,8 @@ package bg.fmi.rateuni.models;
 
 import bg.fmi.rateuni.vo.RequestStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +25,8 @@ public class UserRequest {
     private String facultyName;
     private String programmeName;
     private String facultyNumber;
+    
+    @Enumerated(EnumType.STRING)
     private RequestStatus requestStatus;
     private String image;
     private LocalDateTime createdAt;
