@@ -25,4 +25,8 @@ public class RoleService {
     public void createRole(Role role) {
         roleRepository.save(role);
     }
+    
+    public List<Role> getRolesForUser(UUID userId) {
+        return roleRepository.findRolesForUser(userId);
+    }
 }
