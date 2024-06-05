@@ -29,7 +29,7 @@ public class FacultyCrudService {
         facultyRepository.save(faculty);
     }
 
-    public void addProgrammeToFaculty (UUID facultyId, List<Programme> programs) {
+    public void addProgrammeToFaculty (UUID facultyId, Set<Programme> programs) {
         facultyRepository.addProgrammeToFaculty(facultyId, programs);
     }
 

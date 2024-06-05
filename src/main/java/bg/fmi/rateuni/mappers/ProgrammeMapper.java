@@ -1,7 +1,10 @@
 package bg.fmi.rateuni.mappers;
 
+import bg.fmi.rateuni.dto.request.CreateFacultyRequest;
+import bg.fmi.rateuni.dto.request.CreateProgrammeRequest;
 import bg.fmi.rateuni.dto.response.ProgrammeInfoResponse;
 import bg.fmi.rateuni.dto.response.ProgrammeResponse;
+import bg.fmi.rateuni.models.Faculty;
 import bg.fmi.rateuni.models.Programme;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,4 +21,6 @@ public interface ProgrammeMapper {
     
     @Mapping(source = "programme.id", target = "idResponse")
     ProgrammeResponse mapToDto(Programme programme);
+
+    Programme mapFromCreateRequest(CreateProgrammeRequest createProgrammeRequest);
 }
