@@ -9,8 +9,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface ProgrammeMapper {
 
-    @Mapping(source = "programmeDto.idInfoResponse", target = "id")
-    @Mapping(source = "programmeDto.disciplines", target = "programmeDisciplines")
+    @Mapping(source = "programmeDto.idResponse", target = "id")
     Programme mapFromDto(ProgrammeResponse programmeDto);
     
     @Mapping(source = "programme.id", target = "idInfoResponse")
@@ -18,6 +17,5 @@ public interface ProgrammeMapper {
     ProgrammeInfoResponse mapToInfoResponseDto(Programme programme);
     
     @Mapping(source = "programme.id", target = "idResponse")
-    @Mapping(source = "programmeDisciplines", target = "disciplines")
     ProgrammeResponse mapToDto(Programme programme);
 }

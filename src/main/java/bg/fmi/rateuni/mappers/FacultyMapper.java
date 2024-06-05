@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface FacultyMapper {
-    @Mapping(source = "idResponse", target = "faculty.id")
+    @Mapping(source = "idResponse", target = "id")
     Faculty mapFromDto(FacultyResponse facultyDto);
 
     @Mapping(source = "faculty.id", target = "idInfoResponse")
