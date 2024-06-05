@@ -1,5 +1,6 @@
 package bg.fmi.rateuni.mappers;
 
+import bg.fmi.rateuni.dto.request.CreateFacultyRequest;
 import bg.fmi.rateuni.dto.response.FacultyInfoResponse;
 import bg.fmi.rateuni.dto.response.FacultyResponse;
 import bg.fmi.rateuni.models.Faculty;
@@ -17,4 +18,6 @@ public interface FacultyMapper {
 
     @Mapping(source = "faculty.id", target = "idResponse")
     FacultyResponse mapToDto(Faculty faculty);
+    
+    Faculty mapFromCreateRequest(CreateFacultyRequest createFacultyRequest);
 }

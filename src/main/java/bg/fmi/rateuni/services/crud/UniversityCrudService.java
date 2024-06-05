@@ -1,5 +1,6 @@
 package bg.fmi.rateuni.services.crud;
 
+import bg.fmi.rateuni.models.Faculty;
 import bg.fmi.rateuni.models.University;
 import bg.fmi.rateuni.models.User;
 import bg.fmi.rateuni.repository.UniversityRepository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -33,5 +35,13 @@ public class UniversityCrudService {
     
     public void addUserToUniversity(UUID universityId, List<User> users) {
         universityRepository.addUserToUniversity(universityId, users);
+    }
+    
+    public List<Faculty> getFacultiesFor(UUID id) {
+        return universityRepository.findFacultiesById(id).stream().toList();
+    }
+    
+    public void addFacultyToUniversity(UUID universityId, Set<Faculty> faculties) {
+        universityRepository.addFacultyToUniversity(universityId, faculties);
     }
 }
