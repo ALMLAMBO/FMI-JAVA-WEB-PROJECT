@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "cd8cc2a9-f2ed-4948-90df-a39f533ac7bc",
+		"name": "RateUni",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34173163"
+	},
+	"item": [
+		{
+			"name": "University",
+			"item": [
+				{
+					"name": "get-all-universities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/universities/all",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"universities",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-uni-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/universities/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"universities",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-uni",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/universities/create",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"universities",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-uni",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/universities/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"universities",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Faculty",
+			"item": [
+				{
+					"name": "get-all-faculties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/faculties/all",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"faculties",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-faculty-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/faculties/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"faculties",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-faculty",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/faculties/create",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"faculties",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-faculty",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/faculties/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"faculties",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Programme",
+			"item": [
+				{
+					"name": "get-all-programs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/programme/all",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"programme",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-programme-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/programme/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"programme",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-programme",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/programme/create",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"programme",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-programme",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/programme/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"programme",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discipline",
+			"item": [
+				{
+					"name": "get-all-disciplines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/discipline/all",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"discipline",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-discipline-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/discipline/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"discipline",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-discipline",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/discipline/create",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"discipline",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-programme",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/discipline/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"discipline",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "get-all-reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/reviews/all",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"reviews",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-review-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/review/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"review",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/review/create",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"review",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/review/guid",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"review",
+								"guid"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/user/login",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/user/register",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-details",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http/localhost::8080/api/user/detail",
+							"host": [
+								"http"
+							],
+							"path": [
+								"localhost::8080",
+								"api",
+								"user",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
