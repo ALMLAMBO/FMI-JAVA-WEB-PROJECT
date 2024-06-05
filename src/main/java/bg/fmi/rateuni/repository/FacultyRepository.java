@@ -23,16 +23,8 @@ public interface FacultyRepository extends JpaRepository<Faculty, UUID> {
     List<Programme> findProgramsByFacultyId(@Param("id") UUID id);
 
     @Modifying
-    @Query("UPDATE University u SET u.universityFaculties = :universityFaculties WHERE u.id = :universityId")
-    void addFacultyToUniversity(@Param("universityId") UUID universityId,
-                                @Param("universityFaculties") List<Faculty> faculties);
-
-    @Query("SELECT u.universityFaculties FROM University u WHERE u.id = :id")
-    List<Faculty> findFacultiesByUniversityId(@Param("id") UUID id);
-
-    @Modifying
     @Query("UPDATE Faculty f SET f.users = :users WHERE f.id = :facultyId")
-    void addUserToFacultyBy(@Param("facultyId") UUID facultyId,
+    void addUserToFacultyById(@Param("facultyId") UUID facultyId,
                             @Param("users") List<User> users);
 
     @Query("SELECT f.users FROM Faculty f WHERE f.id =:id")
