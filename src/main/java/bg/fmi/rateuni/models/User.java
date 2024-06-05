@@ -18,6 +18,7 @@ public class User {
     @Id
     private UUID id;
     private String email;
+    private String username;
     private String password;
     private String facultyNumber;
     @Enumerated(EnumType.STRING)
