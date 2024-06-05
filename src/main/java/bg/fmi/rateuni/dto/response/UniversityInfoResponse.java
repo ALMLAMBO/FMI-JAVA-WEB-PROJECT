@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Data
 public class UniversityInfoResponse {
-    private UUID id;
+    private UUID idInfoResponse;
     private String name;
     private String rector;
     private String hqAddress;

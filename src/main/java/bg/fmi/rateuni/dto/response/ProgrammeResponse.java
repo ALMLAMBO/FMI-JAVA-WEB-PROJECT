@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Data
 public class ProgrammeResponse {
-    private UUID id;
+    private UUID idResponse;
     private String title;
     private String description;
 }

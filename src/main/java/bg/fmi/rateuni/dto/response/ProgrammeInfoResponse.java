@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Data
 public class ProgrammeInfoResponse {
-    private UUID id;
+    private UUID idInfoResponse;
     private String title;
     private String description;
     List<DisciplineResponse> disciplines;

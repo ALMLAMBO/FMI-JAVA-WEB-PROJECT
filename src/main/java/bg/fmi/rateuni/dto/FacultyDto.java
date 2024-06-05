@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class FacultyDto {
     @NotBlank
-    private String name;
+    private String nameDto;
     @NotBlank
     private String dean;
     @NotBlank
