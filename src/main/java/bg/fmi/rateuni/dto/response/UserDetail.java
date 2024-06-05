@@ -1,8 +1,8 @@
 package bg.fmi.rateuni.dto.response;
 
-import bg.fmi.rateuni.models.Discipline;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data

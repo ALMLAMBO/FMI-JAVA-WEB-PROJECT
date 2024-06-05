@@ -15,6 +15,6 @@ public interface UserMapper {
     @Mapping(source = "user.facultyNumber", target = "facultyNumber")
     @Mapping(source = "university.name", target = "universityName")
     @Mapping(source = "faculty.name", target = "facultyName")
-    @Mapping(source = "programme.name", target = "programmeName")
+    @Mapping(source = "programme.title", target = "programmeName")
     UserDetail mapToUserDetail(User user, University university, Faculty faculty, Programme programme);
 }

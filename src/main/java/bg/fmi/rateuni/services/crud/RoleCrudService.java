@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class RoleService {
+public class RoleCrudService {
     @Autowired
     private RoleRepository roleRepository;
     

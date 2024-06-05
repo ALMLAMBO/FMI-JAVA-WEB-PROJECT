@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class FacultyService {
+public class FacultyCrudService {
     @Autowired
     private FacultyRepository facultyRepository;
 

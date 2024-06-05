@@ -1,6 +1,10 @@
 package bg.fmi.rateuni.dto.response;
 
+import bg.fmi.rateuni.vo.DisciplineCategory;
+import bg.fmi.rateuni.vo.DisciplineType;
 import lombok.Data;
+
+import java.util.UUID;
 
 @Data
 public class DisciplineResponse {
