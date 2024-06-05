@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class UniversityService {
+public class UniversityCrudService {
     @Autowired
     private UniversityRepository universityRepository;
 

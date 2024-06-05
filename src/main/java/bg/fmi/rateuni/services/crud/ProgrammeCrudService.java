@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class ProgrammeService {
+public class ProgrammeCrudService {
     @Autowired
     private ProgrammeRepository programmeRepository;
 

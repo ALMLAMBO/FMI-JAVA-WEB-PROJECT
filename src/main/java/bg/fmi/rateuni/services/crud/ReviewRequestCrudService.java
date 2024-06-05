@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class ReviewRequestService {
+public class ReviewRequestCrudService {
     @Autowired
     private ReviewRequestRepository reviewRequestRepository;
 

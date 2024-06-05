@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Service
-public class DisciplineService {
+public class DisciplineCrudService {
     @Autowired
     private DisciplineRepository disciplineRepository;
 

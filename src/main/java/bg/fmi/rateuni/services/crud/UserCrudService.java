@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Service
-public class UserService {
+public class UserCrudService {
     @Autowired
     private UserRepository userRepository;
 
