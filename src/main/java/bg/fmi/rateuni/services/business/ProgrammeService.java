@@ -1,6 +1,7 @@
 package bg.fmi.rateuni.services.business;
 
 import bg.fmi.rateuni.dto.request.CreateDisciplineRequest;
+import bg.fmi.rateuni.dto.request.CreateProgrammeRequest;
 import bg.fmi.rateuni.dto.response.DisciplineResponse;
 import bg.fmi.rateuni.dto.response.ProgrammeInfoResponse;
 import bg.fmi.rateuni.mappers.DisciplineMapper;
@@ -56,7 +57,9 @@ public class ProgrammeService {
         return programmeMapper.mapToInfoResponseDto(programme);
     }
 
-    public void createUpdateProgramme(Programme programme) {
+    public void createUpdateProgramme(CreateProgrammeRequest createProgrammeRequest) {
+        Programme programme = programmeMapper.mapFromCreateRequest(createProgrammeRequest);
+        programme.setId(UUID.randomUUID());
         programmeCrudService.createUpdateProgramme(programme);
     }
 

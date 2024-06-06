@@ -1,5 +1,6 @@
 package bg.fmi.rateuni.services.business;
 
+import bg.fmi.rateuni.dto.request.CreateFacultyRequest;
 import bg.fmi.rateuni.dto.request.CreateProgrammeRequest;
 import bg.fmi.rateuni.dto.response.FacultyInfoResponse;
 import bg.fmi.rateuni.dto.response.ProgrammeResponse;
@@ -7,6 +8,7 @@ import bg.fmi.rateuni.mappers.FacultyMapper;
 import bg.fmi.rateuni.mappers.ProgrammeMapper;
 import bg.fmi.rateuni.models.Faculty;
 import bg.fmi.rateuni.models.Programme;
+import bg.fmi.rateuni.models.University;
 import bg.fmi.rateuni.services.crud.FacultyCrudService;
 import bg.fmi.rateuni.services.crud.ProgrammeCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +57,9 @@ public class FacultyService {
         return facultyMapper.mapToInfoResponseDto(faculty);
     }
 
-    public void createUpdateFaculty(Faculty faculty) {
+    public void createUpdateFaculty(CreateFacultyRequest createFacultyRequest) {
+        Faculty faculty = facultyMapper.mapFromCreateRequest(createFacultyRequest);
+        faculty.setId(UUID.randomUUID());
         facultyCrudService.createUpdateFaculty(faculty);
     }
 

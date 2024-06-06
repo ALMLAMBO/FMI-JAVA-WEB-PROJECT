@@ -1,9 +1,11 @@
 package bg.fmi.rateuni.services.business;
 
+import bg.fmi.rateuni.dto.request.CreateDisciplineRequest;
 import bg.fmi.rateuni.dto.response.DisciplineResponse;
 import bg.fmi.rateuni.mappers.DisciplineMapper;
 import bg.fmi.rateuni.mappers.ProgrammeMapper;
 import bg.fmi.rateuni.models.Discipline;
+import bg.fmi.rateuni.models.University;
 import bg.fmi.rateuni.services.crud.DisciplineCrudService;
 import bg.fmi.rateuni.services.crud.ReviewCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,9 @@ public class DisciplineService {
         return disciplineMapper.mapToDto(discipline);
     }
 
-    public void createUpdateProgramme(Discipline discipline) {
+    public void createUpdateDiscipline(CreateDisciplineRequest createDisciplineRequest) {
+        Discipline discipline = disciplineMapper.mapFromCreateRequest(createDisciplineRequest);
+        discipline.setId(UUID.randomUUID());
         disciplineCrudService.createUpdateDiscipline(discipline);
     }
 }
