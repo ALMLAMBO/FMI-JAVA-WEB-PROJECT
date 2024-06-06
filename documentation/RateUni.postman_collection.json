@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "cd8cc2a9-f2ed-4948-90df-a39f533ac7bc",
+		"_postman_id": "48fc9d15-a0d4-40d7-9a4e-ef7c13a574fc",
 		"name": "RateUni",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34173163"
+		"_exporter_id": "34072126"
 	},
 	"item": [
 		{
@@ -15,15 +15,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/universities/all",
+							"raw": "http://localhost:8080/api/universities",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
-								"universities",
-								"all"
+								"universities"
 							]
 						}
 					},
@@ -35,15 +35,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/universities/guid",
+							"raw": "http://localhost:8080/api/universities/20b831c4-1547-4c46-a246-40f71d852225",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"universities",
-								"guid"
+								"20b831c4-1547-4c46-a246-40f71d852225"
 							]
 						}
 					},
@@ -54,16 +55,56 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sofia University\",\r\n    \"rector\": \"Anastas Gerdzikov\",\r\n    \"hqAddress\": \"Tsar Osvoboditel Blvd 15, 1504 Sofia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http/localhost::8080/api/universities/create",
+							"raw": "http://localhost:8080/api/universities",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
+								"api",
+								"universities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-faculty",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FMI\",\r\n    \"dean\": \"Maya Stoyanova\",\r\n    \"address\": \"James Boucher blvd 5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/universities/20b831c4-1547-4c46-a246-40f71d852225/add-faculty",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
 								"api",
 								"universities",
-								"create"
+								"20b831c4-1547-4c46-a246-40f71d852225",
+								"add-faculty"
 							]
 						}
 					},
@@ -325,7 +366,7 @@
 					"response": []
 				},
 				{
-					"name": "update-discipline",
+					"name": "update-programme",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -439,6 +480,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http/localhost::8080/api/user/login",
 							"host": [
