@@ -1,5 +1,6 @@
 package bg.fmi.rateuni.repository;
 
+import bg.fmi.rateuni.models.Discipline;
 import bg.fmi.rateuni.models.Programme;
 import bg.fmi.rateuni.models.Review;
 import bg.fmi.rateuni.models.User;
@@ -21,4 +22,11 @@ public interface ProgrammeRepository extends JpaRepository<Programme, UUID> {
 
     @Query("SELECT p.users FROM Programme p WHERE p.id = :programmeId")
     List<User> findAllUsersByProgrammeId(@Param("programmeId") UUID programmeId);
+
+    @Modifying
+    @Query("UPDATE Programme p SET p.programmeDisciplines = disciplines: WHERE p.id = :programmeId")
+    void addDisciplineToProgramme(@Param("programmeId") UUID programmeId, @Param("disciplines") Set<Discipline> disciplines);
+
+    @Query("SELECT p.programmeDisciplines FROM Programme p WHERE p.id = :id")
+    List<Discipline> findDisciplinesByProgrammeId(@Param("id") UUID id);
 }
