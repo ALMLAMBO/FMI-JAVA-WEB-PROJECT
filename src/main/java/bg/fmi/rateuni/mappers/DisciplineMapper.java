@@ -10,7 +10,7 @@ import org.mapstruct.Mapping;
 
 import java.util.UUID;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface DisciplineMapper {
     DisciplineResponse mapToDto(Discipline discipline);
 

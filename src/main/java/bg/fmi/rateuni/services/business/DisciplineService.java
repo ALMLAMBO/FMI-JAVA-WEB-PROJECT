@@ -21,9 +21,6 @@ public class DisciplineService {
     private DisciplineCrudService disciplineCrudService;
 
     @Autowired
-    private ProgrammeMapper programmeMapper;
-
-    @Autowired
     private DisciplineMapper disciplineMapper;
 
     public List<DisciplineResponse> getAllDisciplines() {
