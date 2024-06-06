@@ -27,7 +27,7 @@ public class University {
     @ManyToMany(mappedBy = "userUniversities")
     private Set<User> users;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "universities_faculties",
         joinColumns = @JoinColumn(name = "university_id"),
         inverseJoinColumns = @JoinColumn(name = "faculty_id")

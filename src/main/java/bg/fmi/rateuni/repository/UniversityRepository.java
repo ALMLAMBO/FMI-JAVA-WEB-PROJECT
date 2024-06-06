@@ -3,6 +3,7 @@ package bg.fmi.rateuni.repository;
 import bg.fmi.rateuni.models.Faculty;
 import bg.fmi.rateuni.models.University;
 import bg.fmi.rateuni.models.User;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -26,6 +27,7 @@ public interface UniversityRepository extends JpaRepository<University, UUID> {
     Set<Faculty> findFacultiesById(@Param("id") UUID id);
     
     @Modifying
+    @Transactional
     @Query("UPDATE University u SET u.universityFaculties = :faculties WHERE u.id = :id")
     void addFacultyToUniversity(@Param("id") UUID id, @Param("faculties") Set<Faculty> faculties);
 }

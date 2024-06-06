@@ -1,6 +1,7 @@
 package bg.fmi.rateuni.services.business;
 
 import bg.fmi.rateuni.dto.request.CreateFacultyRequest;
+import bg.fmi.rateuni.dto.request.CreateUniversityRequest;
 import bg.fmi.rateuni.dto.response.FacultyResponse;
 import bg.fmi.rateuni.dto.response.UniversityInfoResponse;
 import bg.fmi.rateuni.mappers.FacultyMapper;
@@ -33,17 +34,7 @@ public class UniversityService {
         return universityCrudService
                 .getAllUniversities()
                 .stream()
-                .map(university -> {
-                    UniversityInfoResponse universityInfoResponse = universityMapper.mapToInfoResponseDto(university);
-                    List<FacultyResponse> faculties = universityCrudService
-                            .getFacultiesFor(university.getId())
-                            .stream()
-                            .map(faculty -> facultyMapper.mapToDto(faculty))
-                            .toList();
-                    
-                    universityInfoResponse.setFaculties(faculties);
-                    return universityInfoResponse;
-                })
+                .map(university -> universityMapper.mapToInfoResponseDto(university))
                 .toList();
     }
     
@@ -53,16 +44,33 @@ public class UniversityService {
             throw new IllegalArgumentException("University with id " + id + " not found");
         }
         
+        UniversityInfoResponse universityInfoResponse = universityMapper.mapToInfoResponseDto(university);
+        List<FacultyResponse> faculties = universityCrudService
+                .getFacultiesFor(university.getId())
+                .stream()
+                .map(faculty -> facultyMapper.mapToDto(faculty))
+                .toList();
+        
+        universityInfoResponse.setFaculties(faculties);
+        
         return universityMapper.mapToInfoResponseDto(university);
     }
     
-    public void createUpdateUniversity(University university) {
+    public void createUpdateUniversity(CreateUniversityRequest universityRequest) {
+        University university = universityMapper.mapFromCreateRequest(universityRequest);
+        university.setId(UUID.randomUUID());
         universityCrudService.createUpdateUniversity(university);
     }
     
     public void addFacultyToUniversity(UUID universityId, CreateFacultyRequest facultyRequest) {
         Faculty faculty = facultyMapper.mapFromCreateRequest(facultyRequest);
-        facultyCrudService.createUpdateFaculty(faculty);
+        try {
+            facultyCrudService.createUpdateFaculty(faculty);
+        }
+        catch(Exception e) {
+            faculty.setId(UUID.randomUUID());
+            facultyCrudService.createUpdateFaculty(faculty);
+        }
         University university = universityCrudService.getUniversityById(universityId).get();
         university.getUniversityFaculties().add(faculty);
         universityCrudService.addFacultyToUniversity(university.getId(), university.getUniversityFaculties());

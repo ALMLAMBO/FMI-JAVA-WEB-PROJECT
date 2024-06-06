@@ -1,5 +1,6 @@
 package bg.fmi.rateuni.mappers;
 
+import bg.fmi.rateuni.dto.request.CreateUniversityRequest;
 import bg.fmi.rateuni.dto.response.UniversityInfoResponse;
 import bg.fmi.rateuni.models.University;
 import org.mapstruct.Mapper;
@@ -13,4 +14,6 @@ public interface UniversityMapper {
     @Mapping(source = "id", target = "idInfoResponse")
     @Mapping(source = "universityFaculties", target = "faculties")
     UniversityInfoResponse mapToInfoResponseDto(University university);
+    
+    University mapFromCreateRequest(CreateUniversityRequest createUniversityRequest);
 }
