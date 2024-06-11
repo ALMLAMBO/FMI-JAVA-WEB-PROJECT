@@ -28,20 +28,4 @@ public class UniversityCrudService {
     public void createUpdateUniversity(University university) {
         universityRepository.save(university);
     }
-    
-    public List<User> getUniversityUsers(UUID id) {
-        return universityRepository.findUsersByUniversityId(id);
-    }
-    
-    public void addUserToUniversity(UUID universityId, List<User> users) {
-        universityRepository.addUserToUniversity(universityId, users);
-    }
-    
-    public List<Faculty> getFacultiesFor(UUID id) {
-        return universityRepository.findFacultiesById(id).stream().toList();
-    }
-    
-    public void addFacultyToUniversity(UUID universityId, Set<Faculty> faculties) {
-        universityRepository.addFacultyToUniversity(universityId, faculties);
-    }
 }

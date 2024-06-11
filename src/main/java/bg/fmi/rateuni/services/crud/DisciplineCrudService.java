@@ -28,28 +28,4 @@ public class DisciplineCrudService {
     public void createUpdateDiscipline (Discipline discipline) {
         disciplineRepository.save(discipline);
     }
-    
-    public void addReviewToDiscipline(UUID disciplineId, Set<Review> reviews) {
-        disciplineRepository.addReviewToDiscipline(disciplineId, reviews);
-    }
-
-    public List<Review> getDisciplineReviews(UUID id) {
-        return disciplineRepository.findDisciplineReviewsById(id);
-    }
-    
-    public void addDisciplineToProgramme(UUID disciplineId, Set<Programme> programmes) {
-        disciplineRepository.addDisciplineToProgramme(disciplineId, programmes);
-    }
-    
-    public List<Programme> getDisciplineProgrammes(UUID id) {
-        return disciplineRepository.findDisciplineProgramsById(id);
-    }
-    
-    public void addUserToDiscipline(UUID disciplineId, Set<Programme> users) {
-        disciplineRepository.addUserToDiscipline(disciplineId, users);
-    }
-    
-    public List<Programme> getDisciplineUsers(UUID id) {
-        return disciplineRepository.findDisciplineUsersById(id);
-    }
 }

@@ -28,12 +28,4 @@ public class ProgrammeCrudService {
     public void createUpdateProgramme (Programme programme) {
         programmeRepository.save(programme);
     }
-
-    public void addDisciplineToProgramme (UUID programmeId, Set<Discipline> disciplines) {
-        programmeRepository.addDisciplineToProgramme(programmeId, disciplines);
-    }
-
-    public List<Discipline> getDisciplinesByProgrammeId (UUID programmeId) {
-        return programmeRepository.findDisciplinesByProgrammeId(programmeId);
-    }
 }

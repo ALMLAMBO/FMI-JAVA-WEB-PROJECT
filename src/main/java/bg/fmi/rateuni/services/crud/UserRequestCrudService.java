@@ -25,8 +25,4 @@ public class UserRequestCrudService {
     public UserRequest createUserRequest(UserRequest userRequest) {
         return userRequestRepository.save(userRequest);
     }
-    
-    public UserRequest getUserRequestByUserId(UUID userId) {
-        return userRequestRepository.findByUserId(userId);
-    }
 }
