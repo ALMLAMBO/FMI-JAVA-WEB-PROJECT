@@ -30,15 +30,12 @@ public class Discipline {
     private String lecturer;
     private String assistants;
 
-    @ManyToMany
-    @JoinTable(name = "disciplines_reviews",
-        joinColumns = @JoinColumn(name = "discipline_id"),
-        inverseJoinColumns = @JoinColumn(name = "review_id")
-    )
+    @OneToMany(mappedBy = "disciplineReviews")
     private Set<Review> disciplineReviews;
 
-    @ManyToMany(mappedBy = "programmeDisciplines")
-    private Set<Programme> programs;
+    @ManyToOne
+    @JoinColumn(name = "programmeDisciplines")
+    private Programme programme;
 
     @ManyToMany(mappedBy = "userDisciplines")
     private Set<User> users;

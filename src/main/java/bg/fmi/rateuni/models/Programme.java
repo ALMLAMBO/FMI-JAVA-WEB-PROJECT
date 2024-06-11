@@ -23,16 +23,10 @@ public class Programme {
     private String title;
     private String description;
 
-    @ManyToMany(mappedBy = "programmes")
-    private Set<User> users;
+    @ManyToOne
+    @JoinColumn(name = "facultyPrograms")
+    private Faculty faculty;
 
-    @ManyToMany (mappedBy = "facultyPrograms")
-    private Set<Faculty> faculties;
-
-    @ManyToMany
-    @JoinTable(name = "programs_disciplines",
-        joinColumns = @JoinColumn(name = "program_id"),
-        inverseJoinColumns = @JoinColumn(name = "discipline_id")
-    )
+    @OneToMany(mappedBy = "programme")
     private Set<Discipline> programmeDisciplines;
 }

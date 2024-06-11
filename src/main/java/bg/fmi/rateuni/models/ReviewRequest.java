@@ -23,7 +23,8 @@ public class ReviewRequest {
     @Enumerated(EnumType.STRING)
     private RequestStatus status;
     
-    @ManyToMany(mappedBy = "reviewRequests")
-    private Set<User> users;
+    @ManyToOne
+    @JoinColumn(name = "reviewRequests")
+    private User user;
     
 }
