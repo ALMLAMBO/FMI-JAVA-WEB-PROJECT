@@ -16,18 +16,4 @@ import java.util.UUID;
 
 @Repository
 public interface UniversityRepository extends JpaRepository<University, UUID> {
-    @Query("SELECT u.users FROM University u WHERE u.id = :id")
-    List<User> findUsersByUniversityId(@Param("id") UUID id);
-    
-    @Modifying
-    @Query("UPDATE University u SET u.users = :users WHERE u.id = :id")
-    void addUserToUniversity(@Param("id") UUID id, @Param("users") List<User> users);
-    
-    @Query("SELECT u.universityFaculties FROM University u WHERE u.id = :id")
-    Set<Faculty> findFacultiesById(@Param("id") UUID id);
-    
-    @Modifying
-    @Transactional
-    @Query("UPDATE University u SET u.universityFaculties = :faculties WHERE u.id = :id")
-    void addFacultyToUniversity(@Param("id") UUID id, @Param("faculties") Set<Faculty> faculties);
 }
