@@ -23,14 +23,7 @@ public class University {
     private String name;
     private String rector;
     private String hqAddress;
-
-    @ManyToMany(mappedBy = "userUniversities")
-    private Set<User> users;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "universities_faculties",
-        joinColumns = @JoinColumn(name = "university_id"),
-        inverseJoinColumns = @JoinColumn(name = "faculty_id")
-    )
-    private Set<Faculty> universityFaculties;
+    
+    @OneToMany(mappedBy = "university")
+    private Set<Faculty> faculties;
 }

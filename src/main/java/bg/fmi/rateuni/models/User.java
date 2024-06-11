@@ -24,28 +24,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserGender gender;
     
-    @ManyToMany
-    @JoinTable(
-            name = "users_programmes",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "programme_id")
-    )
-    private Set<Programme> programmes;
+    @OneToOne(mappedBy = "user")
+    private UserRequest userRequest;
     
-    @ManyToMany
-    @JoinTable(
-            name = "users_reviews",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "review_id")
-    )
-    private Set<Review> userReviews;
+    @OneToMany(mappedBy = "user")
+    private Set<Review> reviews;
     
-    @ManyToMany
-    @JoinTable(
-            name = "users_review_requests",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "review_request_id")
-    )
+    @OneToMany(mappedBy = "user")
     private Set<ReviewRequest> reviewRequests;
     
     @ManyToMany
@@ -55,14 +40,6 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> userRoles;
-    
-    @ManyToMany
-    @JoinTable(
-            name = "users_universities",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "university_id")
-    )
-    private Set<University> userUniversities;
 
     @ManyToMany
     @JoinTable(name = "users_disciplines",
@@ -70,11 +47,4 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "discipline_id")
     )
     private Set<Discipline> userDisciplines;
-
-    @ManyToMany
-    @JoinTable(name = "users_faculties",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "faculty_id")
-    )
-    private Set<Faculty> userFaculties;
 }

@@ -67,7 +67,7 @@ public class ProgrammeService {
         Discipline discipline = disciplineMapper.mapFromCreateRequest(disciplineRequest);
         disciplineCrudService.createUpdateDiscipline(discipline);
         Programme programme = programmeCrudService.getProgrammeById(programmeId).get();
-        programme.getProgrammeDisciplines().add(discipline);
-        programmeCrudService.addDisciplineToProgramme(programmeId, programme.getProgrammeDisciplines());
+//        programme.getProgrammeDisciplines().add(discipline);
+//        programmeCrudService.addDisciplineToProgramme(programmeId, programme.getProgrammeDisciplines());
     }
 }

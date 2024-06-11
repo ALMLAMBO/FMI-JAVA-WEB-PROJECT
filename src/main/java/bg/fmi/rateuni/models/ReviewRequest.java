@@ -17,13 +17,14 @@ import java.util.UUID;
 public class ReviewRequest {
     @Id
     private UUID id;
-    private UUID userId;
-    private UUID reviewId;
     
     @Enumerated(EnumType.STRING)
     private RequestStatus status;
     
-    @ManyToMany(mappedBy = "reviewRequests")
-    private Set<User> users;
+    @OneToOne(mappedBy = "reviewRequest")
+    private Review review;
     
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

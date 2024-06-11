@@ -1,9 +1,6 @@
 package bg.fmi.rateuni.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,9 +34,15 @@ public class Review {
     private boolean hasAdditionalMaterials;
     private boolean visible;
     
-    @ManyToMany(mappedBy = "userReviews")
-    private Set<User> users;
+    @OneToOne
+    @JoinColumn(name = "review_request_id")
+    private ReviewRequest reviewRequest;
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @ManyToMany(mappedBy = "disciplineReviews")
-    private Set<Discipline> disciplines;
+    @ManyToOne
+    @JoinColumn(name = "discipline_id")
+    private Discipline discipline;
 }

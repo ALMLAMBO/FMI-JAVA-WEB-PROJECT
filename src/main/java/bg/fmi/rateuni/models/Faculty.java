@@ -20,15 +20,10 @@ public class Faculty {
     private String dean;
     private String address;
 
-    @ManyToMany
-    @JoinTable (name = "faculty_programs",
-    joinColumns = @JoinColumn(name = "faculty_id"),
-    inverseJoinColumns = @JoinColumn(name = "programme_id"))
-    private Set<Programme> facultyPrograms;
-
-    @ManyToMany(mappedBy = "universityFaculties")
-    private Set<University> universities;
-
-    @ManyToMany(mappedBy = "userFaculties")
-    private Set<User> users;
+    @ManyToOne
+    @JoinColumn(name = "university_id")
+    private University university;
+    
+    @OneToMany(mappedBy = "faculty")
+    private Set<Programme> programmes;
 }

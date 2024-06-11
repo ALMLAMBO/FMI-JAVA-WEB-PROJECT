@@ -45,15 +45,7 @@ public class UniversityService {
         }
         
         UniversityInfoResponse universityInfoResponse = universityMapper.mapToInfoResponseDto(university);
-        List<FacultyResponse> faculties = universityCrudService
-                .getFacultiesFor(university.getId())
-                .stream()
-                .map(faculty -> facultyMapper.mapToDto(faculty))
-                .toList();
-        
-        universityInfoResponse.setFaculties(faculties);
-        
-        return universityMapper.mapToInfoResponseDto(university);
+        return null;
     }
     
     public void createUpdateUniversity(CreateUniversityRequest universityRequest) {
@@ -72,7 +64,7 @@ public class UniversityService {
             facultyCrudService.createUpdateFaculty(faculty);
         }
         University university = universityCrudService.getUniversityById(universityId).get();
-        university.getUniversityFaculties().add(faculty);
-        universityCrudService.addFacultyToUniversity(university.getId(), university.getUniversityFaculties());
+        //university.getUniversityFaculties().add(faculty);
+        //universityCrudService.addFacultyToUniversity(university.getId(), university.getUniversityFaculties());
     }
 }

@@ -32,20 +32,7 @@ public class FacultyService {
     private ProgrammeMapper programmeMapper;
 
     public List<FacultyInfoResponse> getAllFaculties() {
-        return facultyCrudService
-                .getAllFaculties()
-                .stream()
-                .map(faculty -> {
-                    FacultyInfoResponse facultyInfoResponse = facultyMapper.mapToInfoResponseDto(faculty);
-                    List<ProgrammeResponse> programs = facultyCrudService
-                            .getProgramsByFacultyId(faculty.getId())
-                            .stream()
-                            .map(programme -> programmeMapper.mapToDto(programme))
-                            .toList();
-                    facultyInfoResponse.setPrograms(programs);
-                    return facultyInfoResponse;
-                })
-                .toList();
+        return null;
     }
 
     public FacultyInfoResponse getFacultyById(UUID id) {
@@ -67,7 +54,7 @@ public class FacultyService {
         Programme programme = programmeMapper.mapFromCreateRequest(programmeRequest);
         programmeCrudService.createUpdateProgramme(programme);
         Faculty faculty = facultyCrudService.getFacultyById(facultyId).get();
-        faculty.getFacultyPrograms().add(programme);
-        facultyCrudService.addProgrammeToFaculty(faculty.getId(), faculty.getFacultyPrograms());
+        //faculty.getFacultyPrograms().add(programme);
+        //facultyCrudService.addProgrammeToFaculty(faculty.getId(), faculty.getFacultyPrograms());
     }
 }
