@@ -25,5 +25,5 @@ public class Faculty {
     private University university;
     
     @OneToMany(mappedBy = "faculty")
-    private Set<Programme> programmes;
+    private Set<Programme> programs;
 }
