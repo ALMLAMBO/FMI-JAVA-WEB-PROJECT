@@ -7,18 +7,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
     @Modifying
-    @Query("UPDATE User u SET u.userRequest = :userRequests WHERE u.id = :id")
+    @Query("UPDATE User u SET u.userRequest = :userRequest WHERE u.id = :id")
     void addRequestByUserId(@Param("id") UUID id,
-                            @Param("userRequests") Set<UserRequest> userRequests);
+                            @Param("userRequest") UserRequest userRequest);
 
     @Query("SELECT u.userRequest FROM User u WHERE u.id = :id")
-    Set<UserRequest> findAllUserRequestsByUserId(@Param("id") UUID id);
+    UserRequest findUserRequestByUserId(@Param("id") UUID id);
 
     @Modifying
     @Query("UPDATE User u SET u.reviews = :reviews WHERE u.id = :id")
@@ -26,7 +27,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                            @Param("reviews") Set<Review> reviews);
 
     @Query("SELECT u.reviews FROM User u WHERE u.id = :id")
-    Set<Review> findAllReviewsByUserId(@Param("id") UUID id);
+    List<Review> findAllReviewsByUserId(@Param("id") UUID id);
 
     @Modifying
     @Query("UPDATE User u SET u.reviewRequests = :reviewRequests WHERE u.id = :id")
@@ -35,12 +36,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     @Query("SELECT u.reviewRequests FROM User u WHERE u.id = :id")
     Set<ReviewRequest> findAllReviewRequestsByUserId(@Param("id") UUID id);
-
-    @Modifying
-    @Query("UPDATE User u SET u.userRoles = :userRoles WHERE u.id = :id")
-    void addRoleToUserById(@Param("id") UUID id,
-                           @Param("userRoles") Set<Role> userRoles);
-
+    
     @Query("SELECT u.userRoles FROM User u WHERE u.id = :id")
     Set<Role> findAllRolesByUserId(@Param("id") UUID id);
 

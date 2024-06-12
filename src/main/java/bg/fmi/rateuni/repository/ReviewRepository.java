@@ -16,8 +16,11 @@ public interface ReviewRepository extends JpaRepository<Review, UUID> {
     @Modifying
     @Query("UPDATE Review r SET r.reviewRequest = :reviewRequest WHERE r.id = :id")
     void addRequestToReviewById(@Param("id") UUID id,
-                                @Param("reviewRequest") Set<ReviewRequest> reviewRequest);
+                                @Param("reviewRequest") ReviewRequest reviewRequest);
 
-    @Query("SELECT r.reviewRequest FROM Review r WHERE r.id = :id")
-    Set<ReviewRequest> findAllRequestsByReviewId(@Param("id") UUID id);
+    @Query("SELECT r.reviewRequest FROM Review r WHERE r.id = :id") 
+    ReviewRequest findReviewRequestByReviewId(@Param("id") UUID id);
+    
+    @Query("select r from Review r where r.discipline.id = :disciplineId")
+    Set<Review> findReviewsByDisciplineId(@Param("disciplineId") UUID disciplineId);
 }
