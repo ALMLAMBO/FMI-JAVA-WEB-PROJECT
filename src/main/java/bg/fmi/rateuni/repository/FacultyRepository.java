@@ -15,10 +15,10 @@ import java.util.UUID;
 @Repository
 public interface FacultyRepository extends JpaRepository<Faculty, UUID> {
     @Modifying
-    @Query("UPDATE faculties f SET f.programs = :programs WHERE f.id = :id")
+    @Query("UPDATE Faculty f SET f.programs = :programs WHERE f.id = :id")
     void addProgrammeToFacultyById(@Param("id") UUID id,
                                    @Param("programs") Set<Programme> programs);
 
-    @Query("SELECT f.programs FROM faculties f WHERE f.id = :id")
+    @Query("SELECT f.programs FROM Faculty f WHERE f.id = :id")
     Set<Faculty> findAllProgramsByFacultyId(@Param("id") UUID id);
 }

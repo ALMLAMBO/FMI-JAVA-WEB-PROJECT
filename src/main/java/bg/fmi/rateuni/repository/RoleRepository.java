@@ -14,10 +14,10 @@ import java.util.UUID;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, UUID>{
     @Modifying
-    @Query("UPDATE roles r SET r.users = :users WHERE r.id = :id")
+    @Query("UPDATE Role r SET r.users = :users WHERE r.id = :id")
     void addUserToRole(@Param("id") UUID id,
                        @Param("users") Set<User> users);
 
-    @Query("SELECT r.users FROM roles r WHERE r.id = :id")
+    @Query("SELECT r.users FROM Role r WHERE r.id = :id")
     Set<User> findAllRolesByUserId(@Param("id") UUID id);
 }

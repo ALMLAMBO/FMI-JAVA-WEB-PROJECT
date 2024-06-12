@@ -15,10 +15,10 @@ import java.util.UUID;
 @Repository
 public interface UniversityRepository extends JpaRepository<University, UUID> {
     @Modifying
-    @Query("UPDATE universities u SET u.faculties = :faculties WHERE universities.id = :id")
+    @Query("UPDATE University u SET u.faculties = :faculties WHERE u.id = :id")
     void addFacultyToUniversityById(@Param("id") UUID id,
                                     @Param("faculties") Set<Faculty> faculties);
 
-    @Query("SELECT u.faculties FROM universities u WHERE universities.id = :id")
+    @Query("SELECT u.faculties FROM University u WHERE u.id = :id")
     Set<Faculty> findAllFacultiesByUniversityId(@Param("id") UUID id);
 }

@@ -13,43 +13,43 @@ import java.util.UUID;
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
     @Modifying
-    @Query("UPDATE users u SET u.userRequest = :userRequests WHERE u.id = :id")
+    @Query("UPDATE User u SET u.userRequest = :userRequests WHERE u.id = :id")
     void addRequestByUserId(@Param("id") UUID id,
                             @Param("userRequests") Set<UserRequest> userRequests);
 
-    @Query("SELECT u.userRequest FROM users u WHERE u.id = :id")
+    @Query("SELECT u.userRequest FROM User u WHERE u.id = :id")
     Set<UserRequest> findAllUserRequestsByUserId(@Param("id") UUID id);
 
     @Modifying
-    @Query("UPDATE users u SET u.reviews = :reviews WHERE u.id = :id")
+    @Query("UPDATE User u SET u.reviews = :reviews WHERE u.id = :id")
     void addReviewByUserId(@Param("id") UUID id,
                            @Param("reviews") Set<Review> reviews);
 
-    @Query("SELECT u.reviews FROM users u WHERE u.id = :id")
+    @Query("SELECT u.reviews FROM User u WHERE u.id = :id")
     Set<Review> findAllReviewsByUserId(@Param("id") UUID id);
 
     @Modifying
-    @Query("UPDATE users u SET u.reviewRequests = :reviewRequests WHERE u.id = :id")
+    @Query("UPDATE User u SET u.reviewRequests = :reviewRequests WHERE u.id = :id")
     void addReviewRequestsByUserId(@Param("id") UUID id,
                                    @Param("reviewRequests") Set<ReviewRequest> reviewRequests);
 
-    @Query("SELECT u.reviewRequests FROM users u WHERE u.id = :id")
+    @Query("SELECT u.reviewRequests FROM User u WHERE u.id = :id")
     Set<ReviewRequest> findAllReviewRequestsByUserId(@Param("id") UUID id);
 
     @Modifying
-    @Query("UPDATE users u SET u.userRoles = :userRoles WHERE u.id = :id")
+    @Query("UPDATE User u SET u.userRoles = :userRoles WHERE u.id = :id")
     void addRoleToUserById(@Param("id") UUID id,
                            @Param("userRoles") Set<Role> userRoles);
 
-    @Query("SELECT u.userRoles FROM users u WHERE u.id = :id")
+    @Query("SELECT u.userRoles FROM User u WHERE u.id = :id")
     Set<Role> findAllRolesByUserId(@Param("id") UUID id);
 
     @Modifying
-    @Query("UPDATE users u SET u.userDisciplines = :userDisciplines WHERE u.id = :id")
+    @Query("UPDATE User u SET u.userDisciplines = :userDisciplines WHERE u.id = :id")
     void addDisciplineToUserById(@Param("id") UUID id,
                                  @Param("userDisciplines") Set<Discipline> userDisciplines);
 
-    @Query("SELECT u.userDisciplines FROM users u WHERE u.id = :id")
+    @Query("SELECT u.userDisciplines FROM User u WHERE u.id = :id")
     Set<Discipline> findAllDisciplinesByUserId(@Param("id") UUID id);
 
 }

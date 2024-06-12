@@ -14,10 +14,10 @@ import java.util.UUID;
 @Repository
 public interface ProgrammeRepository extends JpaRepository<Programme, UUID> {
     @Modifying
-    @Query("UPDATE programs p SET p.disciplines = :disciplines WHERE p.id = :id")
+    @Query("UPDATE Programme p SET p.disciplines = :disciplines WHERE p.id = :id")
     void addDisciplineToProgrammeById(@Param("id") UUID id,
                                       @Param("disciplines") Set<Discipline> disciplines);
 
-    @Query("SELECT p.disciplines FROM programs p WHERE p.id = :id")
+    @Query("SELECT p.disciplines FROM Programme p WHERE p.id = :id")
     Set<Discipline> findAllDisciplinesByProgrammeId(@Param("id") UUID id);
 }

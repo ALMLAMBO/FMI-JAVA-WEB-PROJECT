@@ -14,10 +14,10 @@ import java.util.UUID;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, UUID> {
     @Modifying
-    @Query("UPDATE reviews r SET r.reviewRequest = :reviewRequest WHERE r.id = :id")
+    @Query("UPDATE Review r SET r.reviewRequest = :reviewRequest WHERE r.id = :id")
     void addRequestToReviewById(@Param("id") UUID id,
                                 @Param("reviewRequest") Set<ReviewRequest> reviewRequest);
 
-    @Query("SELECT r.reviewRequest FROM reviews r WHERE r.id = :id")
+    @Query("SELECT r.reviewRequest FROM Review r WHERE r.id = :id")
     Set<ReviewRequest> findAllRequestsByReviewId(@Param("id") UUID id);
 }

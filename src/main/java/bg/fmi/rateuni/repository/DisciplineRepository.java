@@ -15,18 +15,18 @@ import java.util.UUID;
 @Repository
 public interface DisciplineRepository extends JpaRepository<Discipline, UUID> {
     @Modifying
-    @Query("UPDATE disciplines d SET d.users = :users WHERE d.id = :id")
+    @Query("UPDATE Discipline d SET d.users = :users WHERE d.id = :id")
     void addUsersToDisciplineById(@Param("id") UUID id,
                                   @Param("users") Set<User> users);
 
-    @Query("SELECT d.users FROM disciplines d WHERE d.id = :id")
+    @Query("SELECT d.users FROM Discipline d WHERE d.id = :id")
     Set<User> findAllUsersByDisciplineId(@Param("id") UUID id);
 
     @Modifying
-    @Query("UPDATE disciplines d SET d.ratings = :ratings WHERE d.id = :id")
+    @Query("UPDATE Discipline d SET d.ratings = :ratings WHERE d.id = :id")
     void addRatingToDisciplineById(@Param("id") UUID id,
                                    @Param("ratings") Set<Review> ratings);
 
-    @Query("SELECT d.ratings FROM disciplines d WHERE d.id = :id")
+    @Query("SELECT d.ratings FROM Discipline d WHERE d.id = :id")
     Set<Review> findAllRatingsByDisciplineId(@Param("id") UUID id);
 }
