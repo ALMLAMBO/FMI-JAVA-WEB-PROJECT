@@ -13,7 +13,6 @@ public interface FacultyMapper {
     Faculty mapFromDto(FacultyResponse facultyDto);
 
     @Mapping(source = "faculty.id", target = "idInfoResponse")
-    @Mapping(source = "facultyPrograms", target = "programs")
     FacultyInfoResponse mapToInfoResponseDto(Faculty faculty);
 
     @Mapping(source = "faculty.id", target = "idResponse")
