@@ -4,6 +4,7 @@ import bg.fmi.rateuni.vo.DisciplineCategory;
 import bg.fmi.rateuni.vo.DisciplineType;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -13,4 +14,5 @@ public class DisciplineResponse {
     private double credits;
     private DisciplineCategory category;
     private DisciplineType type;
+    private List<ReviewResponse> reviews;
 }
