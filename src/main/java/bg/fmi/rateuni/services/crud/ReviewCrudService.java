@@ -14,8 +14,8 @@ public class ReviewCrudService {
     @Autowired
     private ReviewRepository reviewRepository;
 
-    public List<Review> getAllReviews() {
-        return reviewRepository.findAll();
+    public List<Review> getReviewsByDisciplineId(UUID disciplineId) {
+        return reviewRepository.findReviewsByDisciplineId(disciplineId);
     }
 
     public Optional<Review> getReviewByID(UUID id) {
