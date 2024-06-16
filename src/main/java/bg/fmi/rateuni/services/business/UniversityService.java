@@ -73,9 +73,7 @@ public class UniversityService {
             return createUniversity(universityRequest);
         }
         
-        university.setName(universityRequest.getName());
-        university.setHqAddress(universityRequest.getHqAddress());
-        university.setRector(universityRequest.getRector());
+        university = universityMapper.mapFromCreateRequest(universityRequest);
         universityCrudService.createUpdateUniversity(university);
         
         return new BaseResponse("University updated successfully");

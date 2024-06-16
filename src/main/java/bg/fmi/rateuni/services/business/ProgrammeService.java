@@ -2,7 +2,7 @@ package bg.fmi.rateuni.services.business;
 
 import bg.fmi.rateuni.dto.request.CreateDisciplineRequest;
 import bg.fmi.rateuni.dto.request.CreateProgrammeRequest;
-import bg.fmi.rateuni.dto.response.DisciplineResponse;
+import bg.fmi.rateuni.dto.response.BaseResponse;
 import bg.fmi.rateuni.dto.response.ProgrammeInfoResponse;
 import bg.fmi.rateuni.mappers.DisciplineMapper;
 import bg.fmi.rateuni.mappers.ProgrammeMapper;
@@ -22,31 +22,13 @@ public class ProgrammeService {
     private ProgrammeCrudService programmeCrudService;
 
     @Autowired
-    private DisciplineCrudService disciplineCrudService;
-
-    @Autowired
     private ProgrammeMapper programmeMapper;
 
     @Autowired
+    private DisciplineCrudService disciplineCrudService;
+
+    @Autowired
     private DisciplineMapper disciplineMapper;
-
-    public List<ProgrammeInfoResponse> getAllPrograms() {
-        return programmeCrudService
-                .getAllPrograms()
-                .stream()
-                .map(programme -> {
-                    ProgrammeInfoResponse programmeInfoResponse = programmeMapper.mapToInfoResponseDto(programme);
-                    List<DisciplineResponse> disciplines = disciplineCrudService
-                            .getDisciplineByID(programme.getId())
-                            .stream()
-                            .map(discipline -> disciplineMapper.mapToDto(discipline))
-                            .toList();
-
-                    programmeInfoResponse.setDisciplines(disciplines);
-                    return programmeInfoResponse;
-                })
-                .toList();
-    }
 
     public ProgrammeInfoResponse getProgrammeById(UUID id) {
         Programme programme = programmeCrudService.getProgrammeById(id).get();
@@ -54,20 +36,61 @@ public class ProgrammeService {
             throw new IllegalArgumentException("Programme with id " + id + " not found");
         }
 
-        return programmeMapper.mapToInfoResponseDto(programme);
+        ProgrammeInfoResponse programmeInfoResponse = programmeMapper.mapToInfoResponseDto(programme);
+        programmeInfoResponse.setDisciplines(disciplineCrudService.getDisciplineById(id)
+                .stream()
+                .map(discipline -> disciplineMapper.mapToDto(discipline))
+                .toList());
+
+        return programmeInfoResponse;
     }
 
-    public void createUpdateProgramme(CreateProgrammeRequest createProgrammeRequest) {
-        Programme programme = programmeMapper.mapFromCreateRequest(createProgrammeRequest);
+    public BaseResponse createProgramme(CreateProgrammeRequest programmeRequest) {
+        Programme programme = programmeCrudService.getProgrammeByTitle(
+                programmeRequest.getTitle()).orElse(null);
+
+        if(programme != null) {
+            return new BaseResponse("Programme with title " + programmeRequest.getTitle() + " already exists");
+        }
+
+        programme = programmeMapper.mapFromCreateRequest(programmeRequest);
         programme.setId(UUID.randomUUID());
         programmeCrudService.createUpdateProgramme(programme);
+        return new BaseResponse("Programme created successfully");
     }
 
-    public void addDisciplineToProgramme(UUID programmeId, CreateDisciplineRequest disciplineRequest) {
-        Discipline discipline = disciplineMapper.mapFromCreateRequest(disciplineRequest);
-        disciplineCrudService.createUpdateDiscipline(discipline);
+    public BaseResponse updateProgramme(UUID id, CreateProgrammeRequest programmeRequest) {
+        Programme programme = programmeCrudService.getProgrammeById(id).get();
+        if(programme == null) {
+            return createProgramme(programmeRequest);
+        }
+
+        programme = programmeMapper.mapFromCreateRequest(programmeRequest);
+        programmeCrudService.createUpdateProgramme(programme);
+
+        return new BaseResponse("Programme updated successfully");
+    }
+
+    public BaseResponse deleteProgramme(UUID id) {
+        programmeCrudService.deleteProgramme(id);
+        return new BaseResponse("Programme deleted successfully");
+    }
+
+    public BaseResponse addDisciplineToProgramme(UUID programmeId, CreateDisciplineRequest disciplineRequest) {
         Programme programme = programmeCrudService.getProgrammeById(programmeId).get();
-//        programme.getProgrammeDisciplines().add(discipline);
-//        programmeCrudService.addDisciplineToProgramme(programmeId, programme.getProgrammeDisciplines());
+        if(programme == null) {
+            throw new IllegalArgumentException("Programme with id " + programmeId + " not found");
+        }
+
+        Discipline discipline = disciplineCrudService.getDisciplineByName(disciplineRequest.getName()).orElse(null);
+        if(discipline != null) {
+            return new BaseResponse("Discipline with name " + disciplineRequest.getName() + " already exists");
+        }
+
+        discipline = disciplineMapper.mapFromCreateRequest(disciplineRequest);
+        discipline.setId(UUID.randomUUID());
+        discipline.setProgramme(programme);
+        disciplineCrudService.createUpdateDiscipline(discipline);
+        return new BaseResponse("Discipline added successfully");
     }
 }
