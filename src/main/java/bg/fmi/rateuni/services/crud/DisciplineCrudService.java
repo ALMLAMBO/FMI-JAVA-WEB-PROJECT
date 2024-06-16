@@ -28,4 +28,12 @@ public class DisciplineCrudService {
     public void createUpdateDiscipline (Discipline discipline) {
         disciplineRepository.save(discipline);
     }
+    
+    public void deleteDiscipline (UUID id) {
+        disciplineRepository.deleteById(id);
+    }
+    
+    public List<Discipline> getDisciplinesByProgrammeId(UUID programmeId) {
+        return disciplineRepository.findDisciplinesByProgrammeId(programmeId);
+    }
 }

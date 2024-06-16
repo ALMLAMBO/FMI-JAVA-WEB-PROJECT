@@ -28,4 +28,12 @@ public class ProgrammeCrudService {
     public void createUpdateProgramme (Programme programme) {
         programmeRepository.save(programme);
     }
+    
+    public void deleteProgramme (UUID id) {
+        programmeRepository.deleteById(id);
+    } 
+    
+    public List<Programme> getProgrammesByFacultyId(UUID facultyId) {
+        return programmeRepository.findProgrammesByFacultyId(facultyId);
+    }
 }

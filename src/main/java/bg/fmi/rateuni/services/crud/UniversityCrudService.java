@@ -1,15 +1,12 @@
 package bg.fmi.rateuni.services.crud;
 
-import bg.fmi.rateuni.models.Faculty;
 import bg.fmi.rateuni.models.University;
-import bg.fmi.rateuni.models.User;
 import bg.fmi.rateuni.repository.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -27,5 +24,9 @@ public class UniversityCrudService {
     
     public void createUpdateUniversity(University university) {
         universityRepository.save(university);
+    }
+    
+    public void deleteUniversity(UUID id) {
+        universityRepository.deleteById(id);
     }
 }

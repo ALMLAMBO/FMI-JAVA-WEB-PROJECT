@@ -28,4 +28,12 @@ public class FacultyCrudService {
     public void createUpdateFaculty (Faculty faculty) {
         facultyRepository.save(faculty);
     }
+    
+    public void deleteFaculty (UUID id) {
+        facultyRepository.deleteById(id);
+    }
+    
+    public List<Faculty> getFacultiesByUniversityId(UUID universityId) {
+        return facultyRepository.findAllFacultiesByUniversityId(universityId);
+    }
 }
