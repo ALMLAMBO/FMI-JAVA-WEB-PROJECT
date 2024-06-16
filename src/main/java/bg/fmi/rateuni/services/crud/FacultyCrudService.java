@@ -25,6 +25,10 @@ public class FacultyCrudService {
         return facultyRepository.findById(id);
     }
 
+    public Optional<Faculty> getFacultyByName (String name) {
+        return facultyRepository.findByName(name);
+    }
+    
     public void createUpdateFaculty (Faculty faculty) {
         facultyRepository.save(faculty);
     }
