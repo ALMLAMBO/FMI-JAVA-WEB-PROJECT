@@ -5,7 +5,7 @@ import bg.fmi.rateuni.dto.response.ReviewResponse;
 import bg.fmi.rateuni.models.Review;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ReviewMapper {
     ReviewResponse mapToDto(Review review);
     Review mapFromDto(ReviewResponse reviewResponse);
