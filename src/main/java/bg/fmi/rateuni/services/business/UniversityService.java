@@ -80,6 +80,11 @@ public class UniversityService {
     }
     
     public BaseResponse deleteUniversity(UUID id) {
+        University university = universityCrudService.getUniversityById(id).orElse(null);
+        if(university == null) {
+            return new BaseResponse("University with id " + id + " not found");
+        }
+        
         universityCrudService.deleteUniversity(id);
         return new BaseResponse("University deleted successfully");
     }
