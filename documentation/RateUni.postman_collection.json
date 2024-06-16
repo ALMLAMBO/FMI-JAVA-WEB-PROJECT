@@ -35,7 +35,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/universities/20b831c4-1547-4c46-a246-40f71d852225",
+							"raw": "http://localhost:8080/api/universities/ea614b1f-d305-4381-b1e8-4f8a8066b3ab",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -44,7 +44,7 @@
 							"path": [
 								"api",
 								"universities",
-								"20b831c4-1547-4c46-a246-40f71d852225"
+								"ea614b1f-d305-4381-b1e8-4f8a8066b3ab"
 							]
 						}
 					},
@@ -80,7 +80,7 @@
 					"response": []
 				},
 				{
-					"name": "add-faculty",
+					"name": "add-faculty-to-university",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -94,7 +94,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/universities/20b831c4-1547-4c46-a246-40f71d852225/add-faculty",
+							"raw": "http://localhost:8080/api/universities/ea614b1f-d305-4381-b1e8-4f8a8066b3ab/faculty",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -103,8 +103,8 @@
 							"path": [
 								"api",
 								"universities",
-								"20b831c4-1547-4c46-a246-40f71d852225",
-								"add-faculty"
+								"ea614b1f-d305-4381-b1e8-4f8a8066b3ab",
+								"faculty"
 							]
 						}
 					},
@@ -125,6 +125,27 @@
 								"api",
 								"universities",
 								"guid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-university",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/universities/90504cbe-f722-43ca-a1b1-076bdbd714d8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"universities",
+								"90504cbe-f722-43ca-a1b1-076bdbd714d8"
 							]
 						}
 					},
