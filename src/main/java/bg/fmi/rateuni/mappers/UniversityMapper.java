@@ -12,7 +12,6 @@ public interface UniversityMapper {
     University mapFromDto(UniversityInfoResponse universityDto);
 
     @Mapping(source = "id", target = "idInfoResponse")
-    @Mapping(source = "universityFaculties", target = "faculties")
     UniversityInfoResponse mapToInfoResponseDto(University university);
     
     University mapFromCreateRequest(CreateUniversityRequest createUniversityRequest);

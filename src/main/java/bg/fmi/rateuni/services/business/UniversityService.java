@@ -2,7 +2,7 @@ package bg.fmi.rateuni.services.business;
 
 import bg.fmi.rateuni.dto.request.CreateFacultyRequest;
 import bg.fmi.rateuni.dto.request.CreateUniversityRequest;
-import bg.fmi.rateuni.dto.response.FacultyResponse;
+import bg.fmi.rateuni.dto.response.BaseResponse;
 import bg.fmi.rateuni.dto.response.UniversityInfoResponse;
 import bg.fmi.rateuni.mappers.FacultyMapper;
 import bg.fmi.rateuni.mappers.UniversityMapper;
@@ -45,26 +45,62 @@ public class UniversityService {
         }
         
         UniversityInfoResponse universityInfoResponse = universityMapper.mapToInfoResponseDto(university);
-        return null;
+        universityInfoResponse.setFaculties(facultyCrudService.getFacultiesByUniversityId(id)
+                .stream()
+                .map(faculty -> facultyMapper.mapToDto(faculty))
+                .toList());
+        
+        return universityInfoResponse;
     }
     
-    public void createUpdateUniversity(CreateUniversityRequest universityRequest) {
-        University university = universityMapper.mapFromCreateRequest(universityRequest);
+    public BaseResponse createUniversity(CreateUniversityRequest universityRequest) {
+        University university = universityCrudService.getUniversityByName(
+                universityRequest.getName()).orElse(null);
+        
+        if(university != null) {
+            return new BaseResponse("University with name " + universityRequest.getName() + " already exists");
+        }   
+     
+        university = universityMapper.mapFromCreateRequest(universityRequest);
         university.setId(UUID.randomUUID());
         universityCrudService.createUpdateUniversity(university);
+        return new BaseResponse("University created successfully");
     }
     
-    public void addFacultyToUniversity(UUID universityId, CreateFacultyRequest facultyRequest) {
-        Faculty faculty = facultyMapper.mapFromCreateRequest(facultyRequest);
-        try {
-            facultyCrudService.createUpdateFaculty(faculty);
+    public BaseResponse updateUniversity(UUID id, CreateUniversityRequest universityRequest) {
+        University university = universityCrudService.getUniversityById(id).get();
+        if(university == null) {
+            return createUniversity(universityRequest);
         }
-        catch(Exception e) {
-            faculty.setId(UUID.randomUUID());
-            facultyCrudService.createUpdateFaculty(faculty);
-        }
+        
+        university.setName(universityRequest.getName());
+        university.setHqAddress(universityRequest.getHqAddress());
+        university.setRector(universityRequest.getRector());
+        universityCrudService.createUpdateUniversity(university);
+        
+        return new BaseResponse("University updated successfully");
+    }
+    
+    public BaseResponse deleteUniversity(UUID id) {
+        universityCrudService.deleteUniversity(id);
+        return new BaseResponse("University deleted successfully");
+    }
+    
+    public BaseResponse addFacultyToUniversity(UUID universityId, CreateFacultyRequest facultyRequest) {
         University university = universityCrudService.getUniversityById(universityId).get();
-        //university.getUniversityFaculties().add(faculty);
-        //universityCrudService.addFacultyToUniversity(university.getId(), university.getUniversityFaculties());
+        if(university == null) {
+            throw new IllegalArgumentException("University with id " + universityId + " not found");
+        }
+
+        Faculty faculty = facultyCrudService.getFacultyByName(facultyRequest.getName()).orElse(null);
+        if(faculty != null) {
+            return new BaseResponse("Faculty with name " + facultyRequest.getName() + " already exists");
+        }
+        
+        faculty = facultyMapper.mapFromCreateRequest(facultyRequest);
+        faculty.setId(UUID.randomUUID());
+        faculty.setUniversity(university);
+        facultyCrudService.createUpdateFaculty(faculty);
+        return new BaseResponse("Faculty added successfully");
     }
 }

@@ -22,6 +22,10 @@ public class UniversityCrudService {
         return universityRepository.findById(id);
     }
     
+    public Optional<University> getUniversityByName(String name) {
+        return universityRepository.findByName(name);
+    }
+    
     public void createUpdateUniversity(University university) {
         universityRepository.save(university);
     }

@@ -30,11 +30,20 @@ public class UniversityController {
     
     @PostMapping
     public ResponseEntity<BaseResponse> createUniversity(@RequestBody CreateUniversityRequest createUniversityRequest) {
-        universityService.createUpdateUniversity(createUniversityRequest);
-        return ResponseEntity.ok(new BaseResponse("University created successfully"));
+        return ResponseEntity.ok(universityService.createUniversity(createUniversityRequest));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<BaseResponse> getUniversityById(@PathVariable UUID id, CreateUniversityRequest createUniversityRequest) {
+        return ResponseEntity.ok(universityService.updateUniversity(id, createUniversityRequest));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<BaseResponse> deleteUniversityById(@PathVariable UUID id) {
+        return ResponseEntity.ok(universityService.deleteUniversity(id));
     }
     
-    @PostMapping("/{id}/add-faculty")
+    @PostMapping("/{id}/faculty")
     public ResponseEntity<BaseResponse> addFacultyToUniversity(@PathVariable UUID id, @RequestBody CreateFacultyRequest createFacultyRequest) {
         universityService.addFacultyToUniversity(id, createFacultyRequest);
         return ResponseEntity.ok(new BaseResponse("Faculty added successfully"));
