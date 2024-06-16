@@ -16,7 +16,6 @@ public interface ProgrammeMapper {
     Programme mapFromDto(ProgrammeResponse programmeDto);
     
     @Mapping(source = "programme.id", target = "idInfoResponse")
-    @Mapping(source = "programmeDisciplines", target = "disciplines")
     ProgrammeInfoResponse mapToInfoResponseDto(Programme programme);
     
     @Mapping(source = "programme.id", target = "idResponse")

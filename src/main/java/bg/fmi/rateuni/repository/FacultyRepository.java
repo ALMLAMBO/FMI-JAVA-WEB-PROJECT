@@ -17,5 +17,5 @@ public interface FacultyRepository extends JpaRepository<Faculty, UUID> {
     List<Faculty> findAllFacultiesByUniversityId(@Param("universityId")UUID universityId);
     
     @Query("select f from Faculty f where f.name = :name")
-    Optional<Faculty> findByName(String name);
+    Optional<Faculty> findByName(@Param("name")String name);
 }
