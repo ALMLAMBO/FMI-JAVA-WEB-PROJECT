@@ -20,19 +20,9 @@ public class ProgrammeController {
     @Autowired
     private ProgrammeService programmeService;
 
-    @GetMapping
-    public ResponseEntity<List<ProgrammeInfoResponse>> getAllFaculties() {
-        return ResponseEntity.ok(programmeService.getAllPrograms());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ProgrammeInfoResponse> getUniversityById(@PathVariable UUID id) {
-        return ResponseEntity.ok(programmeService.getProgrammeById(id));
-    }
-
     @PostMapping
     public ResponseEntity<BaseResponse> createProgramme(@RequestBody CreateProgrammeRequest createProgrammeRequest) {
-        programmeService.createUpdateProgramme(createProgrammeRequest);
+        programmeService.createProgramme(createProgrammeRequest);
         return ResponseEntity.ok(new BaseResponse("Programme created successfully"));
     }
 

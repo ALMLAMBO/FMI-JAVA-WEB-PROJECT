@@ -19,10 +19,6 @@ public class FacultyController {
     @Autowired
     private FacultyService facultyService;
 
-    @GetMapping
-    public ResponseEntity<List<FacultyInfoResponse>> getAllFaculties() {
-        return ResponseEntity.ok(facultyService.getAllFaculties());
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<FacultyInfoResponse> getUniversityById(@PathVariable UUID id) {
@@ -31,7 +27,7 @@ public class FacultyController {
 
     @PostMapping
     public ResponseEntity<BaseResponse> createFaculty(@RequestBody CreateFacultyRequest createFacultyRequest) {
-        facultyService.createUpdateFaculty(createFacultyRequest);
+        facultyService.createFaculty(createFacultyRequest);
         return ResponseEntity.ok(new BaseResponse("Faculty created successfully"));
     }
 

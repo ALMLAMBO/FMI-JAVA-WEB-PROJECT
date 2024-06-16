@@ -4,7 +4,9 @@ import bg.fmi.rateuni.vo.DisciplineCategory;
 import bg.fmi.rateuni.vo.DisciplineType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 public class CreateDisciplineRequest {
     @NotBlank
     private String name;
