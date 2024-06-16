@@ -30,13 +30,13 @@ public class Discipline {
     private String lecturer;
     private String assistants;
 
-    @OneToMany(mappedBy = "discipline")
+    @OneToMany(mappedBy = "discipline", cascade = CascadeType.ALL)
     private Set<Review> ratings;
 
     @ManyToOne
     @JoinColumn(name = "programme_id")
     private Programme programme;
 
-    @ManyToMany(mappedBy = "userDisciplines")
+    @ManyToMany(mappedBy = "userDisciplines", cascade = CascadeType.ALL)
     private Set<User> users;
 }

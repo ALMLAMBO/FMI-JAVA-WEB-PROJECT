@@ -24,6 +24,6 @@ public class Faculty {
     @JoinColumn(name = "university_id")
     private University university;
     
-    @OneToMany(mappedBy = "faculty")
+    @OneToMany(mappedBy = "faculty", cascade = CascadeType.ALL)
     private Set<Programme> programs;
 }

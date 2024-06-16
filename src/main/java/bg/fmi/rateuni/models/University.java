@@ -24,6 +24,6 @@ public class University {
     private String rector;
     private String hqAddress;
     
-    @OneToMany(mappedBy = "university")
+    @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
     private Set<Faculty> faculties;
 }
