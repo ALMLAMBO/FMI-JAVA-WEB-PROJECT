@@ -1,6 +1,7 @@
 package bg.fmi.rateuni.services.crud;
 
 import bg.fmi.rateuni.models.Role;
+import bg.fmi.rateuni.models.User;
 import bg.fmi.rateuni.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,18 @@ public class RoleCrudService {
     }
     
     public void createRole(Role role) {
+        roleRepository.save(role);
+    }
+    
+    public void deleteRole(UUID id) {
+        roleRepository.deleteById(id);
+    }
+    
+    public void addUserToRole(UUID roleId, User user) {
+        Role role = roleRepository.findById(roleId)
+                .orElseThrow(() -> new IllegalArgumentException("Role not found"));
+        
+        role.getUsers().add(user);
         roleRepository.save(role);
     }
 }
