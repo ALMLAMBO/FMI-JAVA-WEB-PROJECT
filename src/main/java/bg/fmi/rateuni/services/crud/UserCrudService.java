@@ -47,7 +47,7 @@ public class UserCrudService {
         userRepository.save(user);
     }
     
-    List<Review> getReviewsByUserId(UUID id) {
+    public List<Review> getReviewsByUserId(UUID id) {
         return userRepository.findAllReviewsByUserId(id);
     }
     

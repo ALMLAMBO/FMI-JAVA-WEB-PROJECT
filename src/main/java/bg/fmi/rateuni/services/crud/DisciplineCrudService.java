@@ -24,8 +24,8 @@ public class DisciplineCrudService {
         return disciplineRepository.findByName(name);
     }
 
-    public void createUpdateDiscipline(Discipline Discipline) {
-        disciplineRepository.save(Discipline);
+    public void createUpdateDiscipline(Discipline discipline) {
+        disciplineRepository.save(discipline);
     }
 
     public void deleteDiscipline(UUID id) {
