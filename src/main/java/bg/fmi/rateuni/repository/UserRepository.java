@@ -8,44 +8,27 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
     @Modifying
     @Query("UPDATE User u SET u.userRequest = :userRequest WHERE u.id = :id")
-    void addRequestByUserId(@Param("id") UUID id,
+    void addUserRequest(@Param("id") UUID id,
                             @Param("userRequest") UserRequest userRequest);
 
     @Query("SELECT u.userRequest FROM User u WHERE u.id = :id")
     UserRequest findUserRequestByUserId(@Param("id") UUID id);
 
-    @Modifying
-    @Query("UPDATE User u SET u.reviews = :reviews WHERE u.id = :id")
-    void addReviewByUserId(@Param("id") UUID id,
-                           @Param("reviews") Set<Review> reviews);
-
-    @Query("SELECT u.reviews FROM User u WHERE u.id = :id")
+    @Query("SELECT r FROM User u, Review r WHERE u.id = :id and r.user = u")
     List<Review> findAllReviewsByUserId(@Param("id") UUID id);
-
-    @Modifying
-    @Query("UPDATE User u SET u.reviewRequests = :reviewRequests WHERE u.id = :id")
-    void addReviewRequestsByUserId(@Param("id") UUID id,
-                                   @Param("reviewRequests") Set<ReviewRequest> reviewRequests);
-
-    @Query("SELECT u.reviewRequests FROM User u WHERE u.id = :id")
-    Set<ReviewRequest> findAllReviewRequestsByUserId(@Param("id") UUID id);
     
-    @Query("SELECT u.userRoles FROM User u WHERE u.id = :id")
-    Set<Role> findAllRolesByUserId(@Param("id") UUID id);
+    @Query("SELECT rr FROM User u, ReviewRequest rr WHERE u.id = :id and rr.user = u")
+    List<ReviewRequest> findAllReviewRequestsByUserId(@Param("id") UUID id);
+    
+    @Query("SELECT r FROM User u, Role r WHERE u.id = :id and r member of u.userRoles")
+    List<Role> findUserRoles(@Param("id") UUID id);
 
-    @Modifying
-    @Query("UPDATE User u SET u.userDisciplines = :userDisciplines WHERE u.id = :id")
-    void addDisciplineToUserById(@Param("id") UUID id,
-                                 @Param("userDisciplines") Set<Discipline> userDisciplines);
-
-    @Query("SELECT u.userDisciplines FROM User u WHERE u.id = :id")
-    Set<Discipline> findAllDisciplinesByUserId(@Param("id") UUID id);
-
+    @Query("SELECT d FROM User u, Discipline d WHERE u.id = :id and d member of u.userDisciplines")
+    List<Discipline> findAllDisciplinesByUserId(@Param("id") UUID id);
 }
