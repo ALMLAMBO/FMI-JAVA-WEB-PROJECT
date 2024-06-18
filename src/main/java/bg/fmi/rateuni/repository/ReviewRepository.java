@@ -26,6 +26,6 @@ public interface ReviewRepository extends JpaRepository<Review, UUID> {
     List<Review> findReviewsByDisciplineId(@Param("disciplineId") UUID disciplineId);
 
     @Query("SELECT u FROM Review r, Discipline d, User u WHERE u.id = :userId AND d.id = :disciplineId" +
-            "AND u member of d.users AND r.discipline = d")
+            " AND u member of d.users AND r.discipline = d")
     User findReviewForDiscipline(@Param("userId") UUID userId, @Param("disciplineId") UUID disciplineId);
 }
