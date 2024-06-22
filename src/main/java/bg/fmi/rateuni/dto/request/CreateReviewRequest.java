@@ -2,6 +2,8 @@ package bg.fmi.rateuni.dto.request;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class CreateReviewRequest {
     private String comment;
@@ -20,4 +22,6 @@ public class CreateReviewRequest {
     private boolean hasBooks;
     private boolean hasPresentations;
     private boolean hasAdditionalMaterials;
+    private UUID userId;
+    private UUID disciplineId;
 }

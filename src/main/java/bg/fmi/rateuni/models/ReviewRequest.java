@@ -2,6 +2,7 @@ package bg.fmi.rateuni.models;
 
 import bg.fmi.rateuni.vo.RequestStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "review_requests")
 public class ReviewRequest {

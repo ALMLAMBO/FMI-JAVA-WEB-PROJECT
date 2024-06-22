@@ -2,6 +2,7 @@ package bg.fmi.rateuni.repository;
 
 import bg.fmi.rateuni.models.Review;
 import bg.fmi.rateuni.models.ReviewRequest;
+import bg.fmi.rateuni.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,8 @@ public interface ReviewRepository extends JpaRepository<Review, UUID> {
     
     @Query("select r from Review r where r.discipline.id = :disciplineId and r.visible = true")
     List<Review> findReviewsByDisciplineId(@Param("disciplineId") UUID disciplineId);
+
+    @Query("SELECT u FROM Review r, Discipline d, User u WHERE u.id = :userId AND d.id = :disciplineId" +
+            " AND u member of d.users AND r.discipline = d")
+    User findReviewForDiscipline(@Param("userId") UUID userId, @Param("disciplineId") UUID disciplineId);
 }
