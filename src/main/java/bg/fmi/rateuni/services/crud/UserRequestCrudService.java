@@ -22,7 +22,11 @@ public class UserRequestCrudService {
         return userRequestRepository.findById(id);
     }
     
-    public UserRequest createUserRequest(UserRequest userRequest) {
-        return userRequestRepository.save(userRequest);
+    public void createUpdateUserRequest(UserRequest userRequest) {
+        userRequestRepository.save(userRequest);
+    }
+
+    public Optional<UserRequest> getUserRequestByUserId(UUID id) {
+        return userRequestRepository.findUserRequestByUserId(id);
     }
 }

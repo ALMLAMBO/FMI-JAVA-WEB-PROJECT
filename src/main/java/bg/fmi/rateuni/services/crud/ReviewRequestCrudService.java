@@ -25,4 +25,8 @@ public class ReviewRequestCrudService {
     public void createUpdateReviewRequest(ReviewRequest reviewRequest) {
         reviewRequestRepository.save(reviewRequest);
     }
+
+    public Optional<ReviewRequest> getReviewRequestByUserId(UUID userId) {
+        return reviewRequestRepository.findReviewRequestByUserId(userId);
+    }
 }
