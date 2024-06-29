@@ -43,4 +43,8 @@ public class ReviewCrudService {
     public void deleteReview(UUID id) {
         reviewRepository.deleteById(id);
     }
+
+    public List<Review> getAllReviews() {
+        return reviewRepository.findAll();
+    }
 }

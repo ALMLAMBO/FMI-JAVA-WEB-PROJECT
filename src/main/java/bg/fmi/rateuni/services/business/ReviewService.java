@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -85,25 +86,7 @@ public class ReviewService {
                 .toList();
     }
 
-    public BaseResponse updateReview(UUID id, CreateReviewRequest createReviewRequest) {
-        Review review = reviewCrudService.getReviewByID(id).get();
-        if(review == null) {
-            return new BaseResponse("Review with id " + id + " not found");
-        }
-
-        Discipline discipline = disciplineCrudService.getDisciplineById(createReviewRequest.getDisciplineId())
-                .orElseThrow(() -> new IllegalArgumentException("Discipline does not exist"));
-        User user = userCrudService.getUserById(createReviewRequest.getUserId())
-                .orElseThrow(() -> new IllegalArgumentException("User does not exist"));
-        review = reviewMapper.mapFromCreateReviewRequest(createReviewRequest);
-        review.setId(id);
-        review.setUser(user);
-        review.setDiscipline(discipline);
-        reviewCrudService.createUpdateReview(review);
-        return new BaseResponse("Review submitted for additional check successfully");
-    }
-
-    public BaseResponse deleteDiscipline(UUID id) {
+    public BaseResponse deleteReview(UUID id) {
         Review review = reviewCrudService.getReviewByID(id).get();
         if(review == null) {
             return new BaseResponse("Review with id " + id + " not found");
@@ -111,5 +94,16 @@ public class ReviewService {
 
         reviewCrudService.deleteReview(id);
         return new BaseResponse("Review deleted successfully");
+    }
+
+    public List<ReviewResponse> getLatestSixReviews() {
+        List<Review> reviews = reviewCrudService.getAllReviews();
+        reviews.stream()
+                .skip(Math.max(0, reviews.size() - 6))
+                .collect(Collectors.toList());
+
+        return reviews.stream()
+                .map(review -> reviewMapper.mapToDto(review))
+                .toList();
     }
 }

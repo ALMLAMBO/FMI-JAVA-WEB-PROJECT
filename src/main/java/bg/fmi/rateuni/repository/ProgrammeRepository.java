@@ -1,6 +1,5 @@
 package bg.fmi.rateuni.repository;
 
-import bg.fmi.rateuni.models.Faculty;
 import bg.fmi.rateuni.models.Programme;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
