@@ -3,7 +3,7 @@ package bg.fmi.rateuni.dto.request;
 import lombok.Data;
 
 @Data
-public class CreateUserRequest {
+public class RegisterRequest {
     private String email;
     private String password;
     private String facultyNumber;

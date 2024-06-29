@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -15,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     @Modifying
     @Query("UPDATE User u SET u.userRequest = :userRequest WHERE u.id = :id")
     void addUserRequest(@Param("id") UUID id,
-                            @Param("userRequest") UserRequest userRequest);
+                        @Param("userRequest") UserRequest userRequest);
 
     @Query("SELECT u.userRequest FROM User u WHERE u.id = :id")
     UserRequest findUserRequestByUserId(@Param("id") UUID id);
@@ -31,4 +32,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     @Query("SELECT d FROM User u, Discipline d WHERE u.id = :id and d member of u.userDisciplines")
     List<Discipline> findAllDisciplinesByUserId(@Param("id") UUID id);
+
+    @Query("SELECT u FROM User u WHERE u.email = :email")
+    Optional<User> findByEmail(@Param("email") String email);
 }

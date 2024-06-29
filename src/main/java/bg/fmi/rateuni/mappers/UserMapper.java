@@ -8,7 +8,7 @@ import bg.fmi.rateuni.models.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
     @Mapping(source = "user.id", target = "id")
     @Mapping(source = "user.email", target = "email")

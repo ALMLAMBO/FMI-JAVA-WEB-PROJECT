@@ -1,7 +1,5 @@
 package bg.fmi.rateuni.services.business;
 
-import bg.fmi.rateuni.dto.response.BaseResponse;
-import bg.fmi.rateuni.mappers.UserMapper;
 import bg.fmi.rateuni.models.UserRequest;
 import bg.fmi.rateuni.services.crud.UserRequestCrudService;
 import bg.fmi.rateuni.vo.RequestStatus;

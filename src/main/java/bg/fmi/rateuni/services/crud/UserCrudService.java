@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -22,7 +21,7 @@ public class UserCrudService {
     public Optional<User> getUserById(UUID id) {
         return userRepository.findById(id);
     }
-    
+
     public void createUpdateUser(User user) {
         userRepository.save(user);
     }
@@ -63,7 +62,7 @@ public class UserCrudService {
         return userRepository.findAllReviewRequestsByUserId(id);
     }
     
-    List<Role> getUserRoles(UUID id) {
+    public List<Role> getUserRoles(UUID id) {
         return userRepository.findUserRoles(id);
     }
     
@@ -75,7 +74,11 @@ public class UserCrudService {
         userRepository.save(user);
     }
     
-    List<Discipline> getDisciplinesByUserId(UUID id) {
+    public List<Discipline> getDisciplinesByUserId(UUID id) {
         return userRepository.findAllDisciplinesByUserId(id);
+    }
+
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
