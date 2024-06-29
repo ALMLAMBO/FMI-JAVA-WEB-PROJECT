@@ -4,6 +4,7 @@ import bg.fmi.rateuni.dto.request.CreateDisciplineRequest;
 import bg.fmi.rateuni.dto.request.CreateProgrammeRequest;
 import bg.fmi.rateuni.dto.response.BaseResponse;
 import bg.fmi.rateuni.dto.response.ProgrammeInfoResponse;
+import bg.fmi.rateuni.dto.response.ProgrammeResponse;
 import bg.fmi.rateuni.mappers.DisciplineMapper;
 import bg.fmi.rateuni.mappers.ProgrammeMapper;
 import bg.fmi.rateuni.models.Discipline;
@@ -92,5 +93,10 @@ public class ProgrammeService {
         discipline.setProgramme(programme);
         disciplineCrudService.createUpdateDiscipline(discipline);
         return new BaseResponse("Discipline added successfully");
+    }
+
+    public List<ProgrammeResponse> getProgramsForFaculty (UUID facultyId) {
+        return programmeCrudService.getProgramsByFacultyId(facultyId)
+                .stream().map(programme -> programmeMapper.mapToDto(programme)).toList();
     }
 }

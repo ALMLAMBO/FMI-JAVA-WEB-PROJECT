@@ -2,9 +2,9 @@ package bg.fmi.rateuni.controllers;
 
 import bg.fmi.rateuni.dto.request.CreateDisciplineRequest;
 import bg.fmi.rateuni.dto.request.CreateProgrammeRequest;
-import bg.fmi.rateuni.dto.request.CreateProgrammeRequest;
 import bg.fmi.rateuni.dto.response.BaseResponse;
 import bg.fmi.rateuni.dto.response.ProgrammeInfoResponse;
+import bg.fmi.rateuni.dto.response.ProgrammeResponse;
 import bg.fmi.rateuni.services.business.ProgrammeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,16 +20,24 @@ public class ProgrammeController {
     @Autowired
     private ProgrammeService programmeService;
 
-    @PostMapping
-    public ResponseEntity<BaseResponse> createProgramme(@RequestBody CreateProgrammeRequest createProgrammeRequest) {
-        programmeService.createProgramme(createProgrammeRequest);
-        return ResponseEntity.ok(new BaseResponse("Programme created successfully"));
+    @GetMapping("/{id}")
+    public ResponseEntity<ProgrammeInfoResponse> getProgrammeById(@PathVariable UUID id) {
+        return ResponseEntity.ok(programmeService.getProgrammeById(id));
     }
 
-    @PostMapping("/{id}/add-discipline")
+    @GetMapping("/{id}/programs")
+    public ResponseEntity<List<ProgrammeResponse>> getProgrammesForFaculty(@PathVariable UUID facultyId) {
+        return ResponseEntity.ok(programmeService.getProgramsForFaculty(facultyId));
+    }
+
+    @PostMapping
+    public ResponseEntity<BaseResponse> createProgramme(@RequestBody CreateProgrammeRequest createProgrammeRequest) {
+        return ResponseEntity.ok(programmeService.createProgramme(createProgrammeRequest));
+    }
+
+    @PostMapping("/{id}/discipline")
     public ResponseEntity<BaseResponse> addDisciplineToProgramme(@PathVariable UUID id, @RequestBody CreateDisciplineRequest createDisciplineRequest) {
-        programmeService.addDisciplineToProgramme(id, createDisciplineRequest);
-        return ResponseEntity.ok(new BaseResponse("Programme added successfully"));
+        return ResponseEntity.ok( programmeService.addDisciplineToProgramme(id, createDisciplineRequest));
     }
 
 }

@@ -1,6 +1,5 @@
 package bg.fmi.rateuni.controllers;
 
-import bg.fmi.rateuni.dto.request.CreateFacultyRequest;
 import bg.fmi.rateuni.dto.request.CreateUniversityRequest;
 import bg.fmi.rateuni.dto.response.BaseResponse;
 import bg.fmi.rateuni.dto.response.UniversityInfoResponse;
@@ -41,11 +40,5 @@ public class UniversityController {
     @DeleteMapping("/{id}")
     public ResponseEntity<BaseResponse> deleteUniversityById(@PathVariable UUID id) {
         return ResponseEntity.ok(universityService.deleteUniversity(id));
-    }
-    
-    @PostMapping("/{id}/faculty")
-    public ResponseEntity<BaseResponse> addFacultyToUniversity(@PathVariable UUID id, @RequestBody CreateFacultyRequest createFacultyRequest) {
-        universityService.addFacultyToUniversity(id, createFacultyRequest);
-        return ResponseEntity.ok(new BaseResponse("Faculty added successfully"));
     }
 }

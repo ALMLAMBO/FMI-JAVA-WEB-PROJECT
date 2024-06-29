@@ -3,6 +3,7 @@ package bg.fmi.rateuni.services.business;
 import bg.fmi.rateuni.dto.response.BaseResponse;
 import bg.fmi.rateuni.dto.response.UserDetail;
 import bg.fmi.rateuni.mappers.DisciplineMapper;
+import bg.fmi.rateuni.mappers.ReviewMapper;
 import bg.fmi.rateuni.mappers.UserMapper;
 import bg.fmi.rateuni.models.*;
 import bg.fmi.rateuni.services.crud.DisciplineCrudService;
@@ -27,6 +28,9 @@ public class UserService {
     @Autowired
     private DisciplineCrudService disciplineCrudService;
 
+    @Autowired
+    private ReviewMapper reviewMapper;
+
     public User getUserByEmail (String email) {
         User user = userCrudService.getUserByEmail(email).orElse(null);
         if (user == null) {
@@ -50,6 +54,9 @@ public class UserService {
         UserDetail userDetail = userMapper.mapToUserDetail(user, university, faculty, programme);
         userDetail.setDisciplines(disciplines.stream()
                 .map(discipline -> disciplineMapper.mapToDto(discipline))
+                .toList());
+        userDetail.setReviews(userCrudService.getReviewsByUserId(userId)
+                .stream().map(review -> reviewMapper.mapToDto(review))
                 .toList());
 
         return userDetail;

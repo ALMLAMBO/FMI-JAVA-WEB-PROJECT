@@ -4,6 +4,7 @@ import bg.fmi.rateuni.dto.request.CreateProgrammeRequest;
 import bg.fmi.rateuni.dto.request.CreateFacultyRequest;
 import bg.fmi.rateuni.dto.response.BaseResponse;
 import bg.fmi.rateuni.dto.response.FacultyInfoResponse;
+import bg.fmi.rateuni.dto.response.FacultyResponse;
 import bg.fmi.rateuni.mappers.ProgrammeMapper;
 import bg.fmi.rateuni.mappers.FacultyMapper;
 import bg.fmi.rateuni.models.Programme;
@@ -13,6 +14,7 @@ import bg.fmi.rateuni.services.crud.FacultyCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -91,5 +93,10 @@ public class FacultyService {
         programme.setFaculty(faculty);
         programmeCrudService.createUpdateProgramme(programme);
         return new BaseResponse("Programme added successfully");
+    }
+
+    public List<FacultyResponse> getFacultiesForUniversity(UUID universityId) {
+        return facultyCrudService.getFacultiesByUniversityId(universityId)
+                .stream().map(faculty -> facultyMapper.mapToDto(faculty)).toList();
     }
 }

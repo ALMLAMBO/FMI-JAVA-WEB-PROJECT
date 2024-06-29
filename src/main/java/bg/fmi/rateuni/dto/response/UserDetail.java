@@ -14,4 +14,5 @@ public class UserDetail {
     private String facultyName;
     private String programmeName;
     private List<DisciplineResponse> disciplines;
+    private List<ReviewResponse> reviews;
 }
