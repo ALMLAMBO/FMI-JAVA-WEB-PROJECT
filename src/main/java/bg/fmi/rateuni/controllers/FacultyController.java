@@ -27,8 +27,8 @@ public class FacultyController {
     }
 
     @GetMapping("/{id}/faculties")
-    public ResponseEntity<List<FacultyResponse>> getFacultiesForUniversity(@PathVariable UUID universityId) {
-        return ResponseEntity.ok(facultyService.getFacultiesForUniversity(universityId));
+    public ResponseEntity<List<FacultyResponse>> getFacultiesForUniversity(@PathVariable UUID id) {
+        return ResponseEntity.ok(facultyService.getFacultiesForUniversity(id));
     }
 
     @PostMapping

@@ -26,8 +26,8 @@ public class ProgrammeController {
     }
 
     @GetMapping("/{id}/programs")
-    public ResponseEntity<List<ProgrammeResponse>> getProgrammesForFaculty(@PathVariable UUID facultyId) {
-        return ResponseEntity.ok(programmeService.getProgramsForFaculty(facultyId));
+    public ResponseEntity<List<ProgrammeResponse>> getProgrammesForFaculty(@PathVariable UUID id) {
+        return ResponseEntity.ok(programmeService.getProgramsForFaculty(id));
     }
 
     @PostMapping

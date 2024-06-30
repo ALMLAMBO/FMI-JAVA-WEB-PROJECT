@@ -3,6 +3,7 @@ package bg.fmi.rateuni.controllers;
 import bg.fmi.rateuni.dto.request.CreateDisciplineRequest;
 import bg.fmi.rateuni.dto.request.CreateReviewRequest;
 import bg.fmi.rateuni.dto.response.BaseResponse;
+import bg.fmi.rateuni.dto.response.DisciplineInfoResponse;
 import bg.fmi.rateuni.dto.response.DisciplineResponse;
 import bg.fmi.rateuni.services.business.DisciplineService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class DisciplineController {
     private DisciplineService disciplineService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<DisciplineResponse> getDisciplineById(@PathVariable UUID id) {
+    public ResponseEntity<DisciplineInfoResponse> getDisciplineById(@PathVariable UUID id) {
         return ResponseEntity.ok(disciplineService.getDisciplineById(id));
     }
 

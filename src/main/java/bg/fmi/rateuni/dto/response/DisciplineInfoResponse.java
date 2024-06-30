@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
-public class DisciplineResponse {
+public class DisciplineInfoResponse {
     private UUID id;
     private String name;
     private double credits;
     private DisciplineCategory category;
     private DisciplineType type;
+    private List<ReviewResponse> reviews;
 }

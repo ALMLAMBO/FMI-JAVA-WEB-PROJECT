@@ -3,6 +3,7 @@ package bg.fmi.rateuni.controllers;
 import bg.fmi.rateuni.dto.request.CreateUniversityRequest;
 import bg.fmi.rateuni.dto.response.BaseResponse;
 import bg.fmi.rateuni.dto.response.UniversityInfoResponse;
+import bg.fmi.rateuni.dto.response.UniversityResponse;
 import bg.fmi.rateuni.services.business.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class UniversityController {
     private UniversityService universityService;
     
     @GetMapping
-    public ResponseEntity<List<UniversityInfoResponse>> getAllUniversities() {
+    public ResponseEntity<List<UniversityResponse>> getAllUniversities() {
         return ResponseEntity.ok(universityService.getAllUniversities());
     }
     

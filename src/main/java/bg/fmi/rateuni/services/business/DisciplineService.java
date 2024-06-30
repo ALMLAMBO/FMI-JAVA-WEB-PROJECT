@@ -3,6 +3,7 @@ package bg.fmi.rateuni.services.business;
 import bg.fmi.rateuni.dto.request.CreateDisciplineRequest;
 import bg.fmi.rateuni.dto.request.CreateReviewRequest;
 import bg.fmi.rateuni.dto.response.BaseResponse;
+import bg.fmi.rateuni.dto.response.DisciplineInfoResponse;
 import bg.fmi.rateuni.dto.response.DisciplineResponse;
 import bg.fmi.rateuni.mappers.DisciplineMapper;
 import bg.fmi.rateuni.mappers.ReviewMapper;
@@ -31,13 +32,13 @@ public class DisciplineService {
     @Autowired
     private ReviewMapper reviewMapper;
 
-    public DisciplineResponse getDisciplineById(UUID id) {
+    public DisciplineInfoResponse getDisciplineById(UUID id) {
         Discipline discipline = disciplineCrudService.getDisciplineById(id).get();
         if(discipline == null) {
             throw new IllegalArgumentException("Discipline with id " + id + " not found");
         }
         
-        DisciplineResponse response = disciplineMapper.mapToDto(discipline);
+        DisciplineInfoResponse response = disciplineMapper.mapToInfoDto(discipline);
         response.setReviews(reviewCrudService.getReviewsByDisciplineId(id)
                 .stream()
                 .map(review -> reviewMapper.mapToDto(review))

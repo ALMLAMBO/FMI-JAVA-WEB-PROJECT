@@ -4,6 +4,7 @@ import bg.fmi.rateuni.dto.request.CreateFacultyRequest;
 import bg.fmi.rateuni.dto.request.CreateUniversityRequest;
 import bg.fmi.rateuni.dto.response.BaseResponse;
 import bg.fmi.rateuni.dto.response.UniversityInfoResponse;
+import bg.fmi.rateuni.dto.response.UniversityResponse;
 import bg.fmi.rateuni.mappers.FacultyMapper;
 import bg.fmi.rateuni.mappers.UniversityMapper;
 import bg.fmi.rateuni.models.Faculty;
@@ -30,11 +31,11 @@ public class UniversityService {
     @Autowired
     private FacultyMapper facultyMapper;
     
-    public List<UniversityInfoResponse> getAllUniversities() {
+    public List<UniversityResponse> getAllUniversities() {
         return universityCrudService
                 .getAllUniversities()
                 .stream()
-                .map(university -> universityMapper.mapToInfoResponseDto(university))
+                .map(university -> universityMapper.mapToDto(university))
                 .toList();
     }
     

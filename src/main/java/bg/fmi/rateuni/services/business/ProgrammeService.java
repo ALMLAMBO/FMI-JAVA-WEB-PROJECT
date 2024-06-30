@@ -10,6 +10,7 @@ import bg.fmi.rateuni.mappers.ProgrammeMapper;
 import bg.fmi.rateuni.models.Discipline;
 import bg.fmi.rateuni.models.Programme;
 import bg.fmi.rateuni.services.crud.DisciplineCrudService;
+import bg.fmi.rateuni.services.crud.FacultyCrudService;
 import bg.fmi.rateuni.services.crud.ProgrammeCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ public class ProgrammeService {
 
     @Autowired
     private DisciplineCrudService disciplineCrudService;
+    
+    @Autowired
+    private FacultyCrudService facultyCrudService;
 
     @Autowired
     private DisciplineMapper disciplineMapper;
@@ -56,6 +60,7 @@ public class ProgrammeService {
 
         programme = programmeMapper.mapFromCreateRequest(programmeRequest);
         programme.setId(UUID.randomUUID());
+        programme.setFaculty(facultyCrudService.getFacultyById(programmeRequest.getFacultyId()).get());
         programmeCrudService.createUpdateProgramme(programme);
         return new BaseResponse("Programme created successfully");
     }
