@@ -4,7 +4,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatCard} from "@angular/material/card";
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {MatButton} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
@@ -34,6 +34,7 @@ import { RegisterComponent } from './components/user/register/register.component
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 import { HomeComponent } from './components/main/home/home.component';
 import { NavbarComponent } from './components/main/navbar/navbar.component';
+import {MatDivider} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -71,7 +72,11 @@ import { NavbarComponent } from './components/main/navbar/navbar.component';
     MatFormField,
     MatInput,
     MatLabel,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardHeader,
+    MatCardContent,
+    MatDivider,
+    MatCardActions
   ],
   providers: [
     provideClientHydration(),
