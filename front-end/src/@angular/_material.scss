@@ -1,0 +1,29 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@include mat.core();
+
+@import 'colors';
+@import 'themes';
+
+a,
+button {
+  &[mat-raised-button], &[mat-flat-button] {
+    &[color=primary] {
+      color: $primary-contrast !important;
+    }
+
+    &[color=accent] {
+      color: $accent-contrast !important;
+    }
+
+    &[color=warn] {
+      color: $warn-contrast !important;
+    }
+  }
+}
+
+@include mat.all-component-themes($my-theme);
+
+.dark-theme {
+  @include mat.all-component-colors($my-dark-theme);
+}
