@@ -15,7 +15,7 @@ public interface FacultyMapper {
     @Mapping(source = "faculty.id", target = "idInfoResponse")
     FacultyInfoResponse mapToInfoResponseDto(Faculty faculty);
 
-    @Mapping(source = "faculty.id", target = "idResponse")
+    @Mapping(source = "id", target = "idResponse")
     FacultyResponse mapToDto(Faculty faculty);
     
     Faculty mapFromCreateRequest(CreateFacultyRequest createFacultyRequest);

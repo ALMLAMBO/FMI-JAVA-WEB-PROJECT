@@ -11,6 +11,7 @@ import bg.fmi.rateuni.models.Programme;
 import bg.fmi.rateuni.models.Faculty;
 import bg.fmi.rateuni.services.crud.ProgrammeCrudService;
 import bg.fmi.rateuni.services.crud.FacultyCrudService;
+import bg.fmi.rateuni.services.crud.UniversityCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,9 @@ public class FacultyService {
 
     @Autowired
     private ProgrammeMapper programmeMapper;
+
+    @Autowired
+    private UniversityCrudService universityCrudService;
 
     public FacultyInfoResponse getFacultyById(UUID id) {
         Faculty faculty = facultyCrudService.getFacultyById(id).get();
@@ -56,6 +60,7 @@ public class FacultyService {
 
         faculty = facultyMapper.mapFromCreateRequest(facultyRequest);
         faculty.setId(UUID.randomUUID());
+        faculty.setUniversity(universityCrudService.getUniversityById(facultyRequest.getUniversityId()).get());
         facultyCrudService.createUpdateFaculty(faculty);
         return new BaseResponse("Faculty created successfully");
     }
@@ -97,6 +102,12 @@ public class FacultyService {
 
     public List<FacultyResponse> getFacultiesForUniversity(UUID universityId) {
         return facultyCrudService.getFacultiesByUniversityId(universityId)
-                .stream().map(faculty -> facultyMapper.mapToDto(faculty)).toList();
+                .stream()
+                .map(faculty -> {
+                    FacultyResponse facultyResponse = facultyMapper.mapToDto(faculty);
+                    facultyResponse.setIdResponse(faculty.getId());
+                    return facultyResponse;
+                })
+                .toList();
     }
 }

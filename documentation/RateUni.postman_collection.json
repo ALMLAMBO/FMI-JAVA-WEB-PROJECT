@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "48fc9d15-a0d4-40d7-9a4e-ef7c13a574fc",
+		"_postman_id": "7f7ac619-6d4f-4944-bea3-6e599240269c",
 		"name": "RateUni",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34072126"
+		"_exporter_id": "34173163"
 	},
 	"item": [
 		{
@@ -35,7 +35,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/universities/ea614b1f-d305-4381-b1e8-4f8a8066b3ab",
+							"raw": "http://localhost:8080/api/universities/b87157e3-5141-41ae-9a0c-7964f69115f7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -44,7 +44,7 @@
 							"path": [
 								"api",
 								"universities",
-								"ea614b1f-d305-4381-b1e8-4f8a8066b3ab"
+								"b87157e3-5141-41ae-9a0c-7964f69115f7"
 							]
 						}
 					},
@@ -80,7 +80,7 @@
 					"response": []
 				},
 				{
-					"name": "add-faculty-to-university",
+					"name": "add-faculty",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -94,7 +94,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/universities/ea614b1f-d305-4381-b1e8-4f8a8066b3ab/faculty",
+							"raw": "http://localhost:8080/api/universities/20b831c4-1547-4c46-a246-40f71d852225/faculty",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -103,7 +103,7 @@
 							"path": [
 								"api",
 								"universities",
-								"ea614b1f-d305-4381-b1e8-4f8a8066b3ab",
+								"20b831c4-1547-4c46-a246-40f71d852225",
 								"faculty"
 							]
 						}
@@ -116,27 +116,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/universities/guid",
-							"host": [
-								"http"
-							],
-							"path": [
-								"localhost::8080",
-								"api",
-								"universities",
-								"guid"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete-university",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/universities/90504cbe-f722-43ca-a1b1-076bdbd714d8",
+							"raw": "http://localhost:8080/api/universities/guid",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -145,7 +125,7 @@
 							"path": [
 								"api",
 								"universities",
-								"90504cbe-f722-43ca-a1b1-076bdbd714d8"
+								"guid"
 							]
 						}
 					},
@@ -157,20 +137,22 @@
 			"name": "Faculty",
 			"item": [
 				{
-					"name": "get-all-faculties",
+					"name": "get-faculties-for-universities",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/faculties/all",
+							"raw": "http://localhost:8080/api/faculties/959e456b-4fce-4ae0-9fa4-8bf57da387f4/faculties",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"faculties",
-								"all"
+								"959e456b-4fce-4ae0-9fa4-8bf57da387f4",
+								"faculties"
 							]
 						}
 					},
@@ -182,12 +164,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/faculties/guid",
+							"raw": "http://localhost:8080/api/faculties/guid",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"faculties",
 								"guid"
@@ -201,16 +184,25 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ФМИ\",\r\n    \"dean\": \"професор Мая Стоянова\",\r\n    \"address\": \"Джеймс Баучер 5\",\r\n    \"universityId\": \"959e456b-4fce-4ae0-9fa4-8bf57da387f4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http/localhost::8080/api/faculties/create",
+							"raw": "http://localhost:8080/api/faculties",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
-								"faculties",
-								"create"
+								"faculties"
 							]
 						}
 					},
@@ -222,12 +214,13 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/faculties/guid",
+							"raw": "http://localhost:8080/api/faculties/guid",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"faculties",
 								"guid"
@@ -242,20 +235,22 @@
 			"name": "Programme",
 			"item": [
 				{
-					"name": "get-all-programs",
+					"name": "get-programs-for-faculty",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/programme/all",
+							"raw": "http://localhost:8080/api/programme/{id}/programs",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"programme",
-								"all"
+								"{id}",
+								"programs"
 							]
 						}
 					},
@@ -267,12 +262,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/programme/guid",
+							"raw": "http://localhost:8080/api/programme/guid",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"programme",
 								"guid"
@@ -287,12 +283,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/programme/create",
+							"raw": "http://localhost:8080/api/programme/create",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"programme",
 								"create"
@@ -307,12 +304,13 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/programme/guid",
+							"raw": "http://localhost:8080/api/programme/guid",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"programme",
 								"guid"
@@ -327,20 +325,22 @@
 			"name": "Discipline",
 			"item": [
 				{
-					"name": "get-all-disciplines",
+					"name": "get-disciplines-for-programme",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/discipline/all",
+							"raw": "http://localhost:8080/api/disciplines/{id}/discipline",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
-								"discipline",
-								"all"
+								"disciplines",
+								"{id}",
+								"discipline"
 							]
 						}
 					},
@@ -352,12 +352,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/discipline/guid",
+							"raw": "http://localhost:8080/api/discipline/guid",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"discipline",
 								"guid"
@@ -372,12 +373,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/discipline/create",
+							"raw": "http://localhost:8080/api/discipline/create",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"discipline",
 								"create"
@@ -392,12 +394,13 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/discipline/guid",
+							"raw": "http://localhost:8080/api/discipline/guid",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"discipline",
 								"guid"
@@ -417,15 +420,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/reviews/all",
+							"raw": "http://localhost:8080/api/reviews/{id}/reviews",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"reviews",
-								"all"
+								"{id}",
+								"reviews"
 							]
 						}
 					},
@@ -437,12 +442,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/review/guid",
+							"raw": "http://localhost:8080/api/review/guid",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"review",
 								"guid"
@@ -457,35 +463,16 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/review/create",
+							"raw": "http://localhost:8080/api/review/create",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"review",
 								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update-review",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http/localhost::8080/api/review/guid",
-							"host": [
-								"http"
-							],
-							"path": [
-								"localhost::8080",
-								"api",
-								"review",
-								"guid"
 							]
 						}
 					},
@@ -511,12 +498,13 @@
 							}
 						},
 						"url": {
-							"raw": "http/localhost::8080/api/user/login",
+							"raw": "http://localhost:8080/api/user/login",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"user",
 								"login"
@@ -531,12 +519,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/user/register",
+							"raw": "http://localhost:8080/api/user/register",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"user",
 								"register"
@@ -551,12 +540,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http/localhost::8080/api/user/detail",
+							"raw": "http://localhost:8080/api/user/detail",
+							"protocol": "http",
 							"host": [
-								"http"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
-								"localhost::8080",
 								"api",
 								"user",
 								"detail"
