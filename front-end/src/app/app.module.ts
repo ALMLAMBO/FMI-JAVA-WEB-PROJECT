@@ -11,11 +11,53 @@ import {MatInput} from "@angular/material/input";
 import { CreateUniversityComponent } from './components/university/create-university/create-university.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {provideHttpClient} from "@angular/common/http";
+import { UniversitiesComponent } from './components/university/universities/universities.component';
+import { UniversityDetailsComponent } from './components/university/university-details/university-details.component';
+import { UpdateUniversityComponent } from './components/university/update-university/update-university.component';
+import { FacultiesComponent } from './components/faculty/faculties/faculties.component';
+import { FacultyDetailsComponent } from './components/faculty/faculty-details/faculty-details.component';
+import { CreateFacultyComponent } from './components/faculty/create-faculty/create-faculty.component';
+import { UpdateFacultyComponent } from './components/faculty/update-faculty/update-faculty.component';
+import { ProgrammesComponent } from './components/programme/programmes/programmes.component';
+import { ProgrammeDetailsComponent } from './components/programme/programme-details/programme-details.component';
+import { CreateProgrammeComponent } from './components/programme/create-programme/create-programme.component';
+import { UpdateProgrammeComponent } from './components/programme/update-programme/update-programme.component';
+import { DisciplinesComponent } from './components/discipline/disciplines/disciplines.component';
+import { DisciplineDetailsComponent } from './components/discipline/discipline-details/discipline-details.component';
+import { CreateDisciplineComponent } from './components/discipline/create-discipline/create-discipline.component';
+import { UpdateDisciplineComponent } from './components/discipline/update-discipline/update-discipline.component';
+import { ReviewsComponent } from './components/review/reviews/reviews.component';
+import { ReviewDetailsComponent } from './components/review/review-details/review-details.component';
+import { CreateReviewComponent } from './components/review/create-review/create-review.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateUniversityComponent
+    CreateUniversityComponent,
+    UniversitiesComponent,
+    UniversityDetailsComponent,
+    UpdateUniversityComponent,
+    FacultiesComponent,
+    FacultyDetailsComponent,
+    CreateFacultyComponent,
+    UpdateFacultyComponent,
+    ProgrammesComponent,
+    ProgrammeDetailsComponent,
+    CreateProgrammeComponent,
+    UpdateProgrammeComponent,
+    DisciplinesComponent,
+    DisciplineDetailsComponent,
+    CreateDisciplineComponent,
+    UpdateDisciplineComponent,
+    ReviewsComponent,
+    ReviewDetailsComponent,
+    CreateReviewComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
