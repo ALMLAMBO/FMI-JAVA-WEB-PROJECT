@@ -1,1 +1,16 @@
-<p>university-details works!</p>
+@if(university) {
+    <div class="flex mx-10 mb-3">
+        <h1 class="justify-center">{{ university.name }}</h1>
+    </div>
+
+    <div class="mx-10 flex mb-3">
+        <h3 class="justify-center">Ректор: {{ university.rector }}</h3>
+    </div>
+
+    <div class="flex mx-10 mb-3">
+        <h3>Aдрес: {{ university.hqAddress }}</h3>
+    </div>
+
+    <app-faculties
+            [faculties]="university.faculties"></app-faculties>
+}
