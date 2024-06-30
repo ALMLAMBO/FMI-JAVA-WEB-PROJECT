@@ -2,6 +2,7 @@ package bg.fmi.rateuni.config.db;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.io.IOException;
@@ -14,6 +15,12 @@ public class DbConfig {
     @Bean
     public DriverManagerDataSource configureMySQLDataSource() throws IOException {
         return configureDriverManager("mysql-credentials.txt", 3306, "mysql");
+    }
+    
+    @Bean
+    @Primary
+    public DriverManagerDataSource configurePostgreSQLDataSource() throws IOException {
+        return configureDriverManager("postgresql-credentials.txt", 5432, "postgresql");
     }
 
     private DriverManagerDataSource configureDriverManager(String fileName, int port, String dbName) throws IOException {
