@@ -1,3 +1,6 @@
+import {DisciplineResponse} from "./discipline-response";
+import {ReviewResponse} from "./review-response";
+
 export class UserDetail {
     id: string;
     email: string;

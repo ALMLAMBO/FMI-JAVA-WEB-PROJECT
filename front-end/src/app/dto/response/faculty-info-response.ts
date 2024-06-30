@@ -1,3 +1,5 @@
+import {ProgrammeResponse} from "./programme-response";
+
 export class FacultyInfoResponse {
      idInfoResponse: string;
      name: string;

@@ -1,3 +1,5 @@
+import {UserGender} from "../../vo/user-gender";
+
 export class RegisterRequest {
     username: string;
     email: string;

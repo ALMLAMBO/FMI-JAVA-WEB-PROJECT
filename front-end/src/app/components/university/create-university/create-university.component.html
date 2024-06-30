@@ -1,0 +1,29 @@
+<div class="container">
+    <form [formGroup]="universityForm" (ngSubmit)="submitUniversity()">
+        <h2 class="mx-4 my-4">Create University</h2>
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <mat-form-field>
+                <mat-label>Rector</mat-label>
+                <input matInput formControlName="rector">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Headquarters address</mat-label>
+                <input matInput formControlName="hqAddress">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <button mat-flat-button color="primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

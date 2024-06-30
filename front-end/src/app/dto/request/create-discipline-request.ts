@@ -1,3 +1,6 @@
+import {DisciplineCategory} from "../../vo/discipline-category";
+import {DisciplineType} from "../../vo/discipline-type";
+
 export class CreateDisciplineRequest {
     name: string;
     description: string;
