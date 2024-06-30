@@ -14,4 +14,6 @@ public class DisciplineResponse {
     private double credits;
     private DisciplineCategory category;
     private DisciplineType type;
+    private String lecturer;
+    private String assistants;
 }

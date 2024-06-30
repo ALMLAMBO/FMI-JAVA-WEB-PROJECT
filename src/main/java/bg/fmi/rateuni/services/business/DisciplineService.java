@@ -10,6 +10,7 @@ import bg.fmi.rateuni.mappers.ReviewMapper;
 import bg.fmi.rateuni.models.Discipline;
 import bg.fmi.rateuni.models.Review;
 import bg.fmi.rateuni.services.crud.DisciplineCrudService;
+import bg.fmi.rateuni.services.crud.ProgrammeCrudService;
 import bg.fmi.rateuni.services.crud.ReviewCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,9 @@ public class DisciplineService {
     
     @Autowired
     private ReviewCrudService reviewCrudService;
+    
+    @Autowired
+    private ProgrammeCrudService programmeCrudService;
     
     @Autowired
     private ReviewMapper reviewMapper;
@@ -61,6 +65,8 @@ public class DisciplineService {
         }
         
         discipline = disciplineMapper.mapFromCreateRequest(createDisciplineRequest);
+        discipline.setId(UUID.randomUUID());
+        discipline.setProgramme(programmeCrudService.getProgrammeById(createDisciplineRequest.getProgrammeId()).get());
         disciplineCrudService.createUpdateDiscipline(discipline);
         return new BaseResponse("Discipline created successfully");
     }

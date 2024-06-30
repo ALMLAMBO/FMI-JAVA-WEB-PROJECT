@@ -6,14 +6,16 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class CreateDisciplineRequest {
-    @NotBlank
     private String name;
-    @NotNull
+    private String description;
     private double credits;
-    @NotNull
     private DisciplineCategory category;
-    @NotNull
     private DisciplineType type;
+    private String lecturer;
+    private String assistants;
+    private UUID programmeId;
 }

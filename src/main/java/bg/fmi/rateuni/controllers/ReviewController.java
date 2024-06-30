@@ -24,8 +24,8 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}/reviews")
-    public ResponseEntity<List<ReviewResponse>> getReviewsForDiscipline(@PathVariable UUID disciplineId) {
-        return ResponseEntity.ok(reviewService.getReviewsByDisciplineId(disciplineId));
+    public ResponseEntity<List<ReviewResponse>> getReviewsForDiscipline(@PathVariable UUID id) {
+        return ResponseEntity.ok(reviewService.getReviewsByDisciplineId(id));
     }
 
     @PostMapping

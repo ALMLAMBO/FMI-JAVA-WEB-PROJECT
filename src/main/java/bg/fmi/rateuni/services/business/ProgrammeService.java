@@ -42,7 +42,7 @@ public class ProgrammeService {
         }
 
         ProgrammeInfoResponse programmeInfoResponse = programmeMapper.mapToInfoResponseDto(programme);
-        programmeInfoResponse.setDisciplines(disciplineCrudService.getDisciplineById(id)
+        programmeInfoResponse.setDisciplines(disciplineCrudService.getDisciplinesByProgrammeId(id)
                 .stream()
                 .map(discipline -> disciplineMapper.mapToDto(discipline))
                 .toList());

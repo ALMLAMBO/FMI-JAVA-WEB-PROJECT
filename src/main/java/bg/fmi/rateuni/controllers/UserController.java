@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping("/{id}/discipline")
-    public ResponseEntity<BaseResponse> addDisciplineToUser(@PathVariable UUID disciplineId, @RequestBody UserDetail userDetail) {
-        return ResponseEntity.ok(userService.addUserToDiscipline(userDetail, disciplineId));
+    public ResponseEntity<BaseResponse> addDisciplineToUser(@PathVariable UUID id, @RequestBody UserDetail userDetail) {
+        return ResponseEntity.ok(userService.addUserToDiscipline(userDetail, id));
     }
 }

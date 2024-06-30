@@ -1,5 +1,7 @@
 package bg.fmi.rateuni.vo;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum DisciplineCategory {
     CSF("ОКН"),
     CSC("ЯКН"),
@@ -13,6 +15,7 @@ private final String identifier;
         this.identifier = id;
     }
 
+    @JsonValue
     public String getName() {
         return identifier;
     }

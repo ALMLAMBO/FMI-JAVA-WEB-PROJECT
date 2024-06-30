@@ -1,5 +1,7 @@
 package bg.fmi.rateuni.vo;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum DisciplineType {
     ELECTIVE("избираема"),
     MANDATORY("задължителна");
@@ -9,7 +11,7 @@ public enum DisciplineType {
         this.type = type;
     }
 
-
+    @JsonValue
     public String getType() {
         return type;
     }

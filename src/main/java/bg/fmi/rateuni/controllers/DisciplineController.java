@@ -26,8 +26,8 @@ public class DisciplineController {
     }
 
     @GetMapping("/{id}/discipline")
-    public ResponseEntity<List<DisciplineResponse>> getDisciplinesForProgramme(@PathVariable UUID programmeId) {
-        return ResponseEntity.ok(disciplineService.getDisciplinesByProgrammeId(programmeId));
+    public ResponseEntity<List<DisciplineResponse>> getDisciplinesForProgramme(@PathVariable UUID id) {
+        return ResponseEntity.ok(disciplineService.getDisciplinesByProgrammeId(id));
     }
 
     @PostMapping
