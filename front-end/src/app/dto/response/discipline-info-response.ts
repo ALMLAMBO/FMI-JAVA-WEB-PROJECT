@@ -6,6 +6,7 @@ export class DisciplineInfoResponse {
     id: string;
     name: string;
     credits: number;
+    description: string;
     category: DisciplineCategory;
     type: DisciplineType;
     reviews: ReviewResponse[];
