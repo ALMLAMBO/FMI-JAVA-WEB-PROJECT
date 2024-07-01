@@ -1,1 +1,23 @@
-<p>update-programme works!</p>
+<div class="container">
+    <form [formGroup]="programmeForm" (ngSubmit)="submitProgramme()">
+        <h2 class="mx-4 my-4">Update Programme</h2>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <button mat-flat-button color="primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
