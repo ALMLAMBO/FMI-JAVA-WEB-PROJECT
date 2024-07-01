@@ -10,8 +10,7 @@ public enum DisciplineType {
     DisciplineType(String type) {
         this.type = type;
     }
-
-    @JsonValue
+    
     public String getType() {
         return type;
     }

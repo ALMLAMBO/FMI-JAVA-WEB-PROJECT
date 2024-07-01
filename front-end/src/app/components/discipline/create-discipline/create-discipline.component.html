@@ -1,1 +1,109 @@
-<p>create-discipline works!</p>
+<div class="container">
+    <form [formGroup]="disciplineForm" (ngSubmit)="submitDiscipline()">
+        <h2 class="mx-4 my-4">Create Discipline</h2>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>University</mat-label>
+                <mat-select formControlName="university" (selectionChange)="updateUniversity($event)">
+                    @for (university of universities; track university) {
+                        <mat-option [value]="university.idInfoResponse">
+                            {{ university.name }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Faculty</mat-label>
+                <mat-select formControlName="faculty" (selectionChange)="updateFaculty($event)">
+                    @for (faculty of faculties; track faculty) {
+                        <mat-option [value]="faculty.idResponse">
+                            {{ faculty.name }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Programme</mat-label>
+                <mat-select formControlName="programme" (selectionChange)="discipline.programmeId = $event.value">
+                    @for (programme of programmes; track programme) {
+                        <mat-option [value]="programme.idResponse">
+                            {{ programme.title }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <mat-form-field>
+                <mat-label>Credits</mat-label>
+                <input matInput formControlName="credits">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <mat-form-field>
+                <mat-label>Lecturer</mat-label>
+                <input matInput formControlName="lecturer">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <mat-form-field>
+                <mat-label>Assistants</mat-label>
+                <input matInput formControlName="assistants">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <mat-form-field>
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="disciplineCategory">
+                    @for(key of Object.keys(DisciplineCategory); track $index) {
+                        <mat-option [value]="key">
+                            {{ Object.values(DisciplineCategory)[$index] }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <mat-form-field>
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="disciplineType">
+                    @for(key of Object.keys(DisciplineType); track $index) {
+                        <mat-option [value]="key">
+                            {{ Object.values(DisciplineType)[$index] }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4">
+            <button mat-flat-button color="primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

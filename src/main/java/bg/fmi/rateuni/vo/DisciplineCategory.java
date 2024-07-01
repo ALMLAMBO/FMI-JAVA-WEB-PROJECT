@@ -15,7 +15,6 @@ private final String identifier;
         this.identifier = id;
     }
 
-    @JsonValue
     public String getName() {
         return identifier;
     }
