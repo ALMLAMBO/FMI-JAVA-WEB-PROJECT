@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader} from "@angular/material/card";
-import {MatButton} from "@angular/material/button";
+import {MatAnchor, MatButton} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import { CreateUniversityComponent } from './components/university/create-university/create-university.component';
@@ -37,6 +37,8 @@ import {MatDivider} from "@angular/material/divider";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {MatIcon} from "@angular/material/icon";
 import {MatCheckbox} from "@angular/material/checkbox";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatToolbar} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -82,7 +84,12 @@ import {MatCheckbox} from "@angular/material/checkbox";
     MatOption,
     MatIcon,
     MatCheckbox,
-    FormsModule
+    FormsModule,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem,
+    MatToolbar,
+    MatAnchor
   ],
   providers: [
     provideClientHydration(),
