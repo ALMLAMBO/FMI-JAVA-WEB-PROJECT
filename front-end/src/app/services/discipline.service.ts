@@ -14,4 +14,8 @@ export class DisciplineService extends BaseService<DisciplineResponse, Disciplin
     super(client);
     this.entityName = environment.entityNames.discipline;
   }
+  
+  getDisciplinesForProgramme(programmeId: string) {
+    return this.client.get<DisciplineResponse[]>(`${environment.baseUrl}/${this.entityName}/${programmeId}/discipline`);
+  }
 }

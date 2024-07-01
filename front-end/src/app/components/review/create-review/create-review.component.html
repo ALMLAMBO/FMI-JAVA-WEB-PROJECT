@@ -1,1 +1,143 @@
-<p>create-review works!</p>
+<div class="container">
+    <h2 class="mx-4 my-4">Create review</h2>
+    <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>University</mat-label>
+                <mat-select formControlName="university" (selectionChange)="updateUniversity($event)">
+                    @for (university of universities; track university) {
+                        <mat-option [value]="university.idInfoResponse">
+                            {{ university.name }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Faculty</mat-label>
+                <mat-select formControlName="faculty" (selectionChange)="updateFaculty($event)">
+                    @for (faculty of faculties; track faculty) {
+                        <mat-option [value]="faculty.idResponse">
+                            {{ faculty.name }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Programme</mat-label>
+                <mat-select formControlName="programme" (selectionChange)="updateProgramme($event)">
+                    @for (programme of programmes; track programme) {
+                        <mat-option [value]="programme.idResponse">
+                            {{ programme.title }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Disciplines</mat-label>
+                <mat-select formControlName="discipline" (selectionChange)="this.review.disciplineId = $event.value">
+                    @for (discipline of disciplines; track disciplines) {
+                        <mat-option [value]="discipline.id">
+                            {{ discipline.name }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Comment</mat-label>
+                <textarea matInput formControlName="comment"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Discipline rating</mat-label>
+                <input matInput type="number" formControlName="courseRating">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Lecturer rating</mat-label>
+                <input matInput type="number" formControlName="lecturerRating">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Assistants rating</mat-label>
+                <input matInput type="number" formControlName="assistantsRating">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Difficulty</mat-label>
+                <input matInput type="number" formControlName="difficulty">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Workload</mat-label>
+                <input matInput type="number" formControlName="workLoad">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-form-field>
+                <mat-label>Usefulness</mat-label>
+                <input matInput type="number" formControlName="usefulness">
+            </mat-form-field>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-checkbox (change)="hasExam = !hasExam">Exam</mat-checkbox>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-checkbox (change)="hasProject = !hasProject">Project</mat-checkbox>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-checkbox (change)="hasMidChecks = !hasMidChecks">Mid checks</mat-checkbox>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-checkbox (change)="hasHomeworks = !hasHomeworks">Homeworks</mat-checkbox>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-checkbox (change)="hasOnlineClasses = !hasOnlineClasses">Online classes</mat-checkbox>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-checkbox (change)="hasBooks = !hasBooks">Books</mat-checkbox>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-checkbox (change)="hasPresentations = !hasPresentations">Presentations</mat-checkbox>
+        </div>
+
+        <div class="mx-4 my-4">
+            <mat-checkbox (change)="hasAdditionalMaterials = !hasAdditionalMaterials">Additional materials
+            </mat-checkbox>
+        </div>
+
+        <div class="mx-4 my-4">
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

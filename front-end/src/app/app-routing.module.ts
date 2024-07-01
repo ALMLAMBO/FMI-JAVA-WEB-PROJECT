@@ -13,7 +13,6 @@ import {ProgrammeDetailsComponent} from "./components/programme/programme-detail
 import {UpdateProgrammeComponent} from "./components/programme/update-programme/update-programme.component";
 import {DisciplinesComponent} from "./components/discipline/disciplines/disciplines.component";
 import {DisciplineDetailsComponent} from "./components/discipline/discipline-details/discipline-details.component";
-import {UpdateDisciplineComponent} from "./components/discipline/update-discipline/update-discipline.component";
 import {RegisterComponent} from "./components/user/register/register.component";
 import {LoginComponent} from "./components/user/login/login.component";
 import {UserDetailsComponent} from "./components/user/user-details/user-details.component";
@@ -71,10 +70,6 @@ const routes: Routes = [
   {
     path: `universities/:${environment.urlIds.university}/faculties/:${environment.urlIds.faculty}/programmes/:${environment.urlIds.programme}/disciplines/:${environment.urlIds.discipline}`,
     component: DisciplineDetailsComponent
-  },
-  {
-    path: `universities/:${environment.urlIds.university}/faculties/:${environment.urlIds.faculty}/programmes/:${environment.urlIds.programme}/disciplines/:${environment.urlIds.discipline}/update`,
-    component: UpdateDisciplineComponent,
   },
   {
     path: 'register',

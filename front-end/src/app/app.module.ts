@@ -9,7 +9,7 @@ import {MatButton} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import { CreateUniversityComponent } from './components/university/create-university/create-university.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {provideHttpClient} from "@angular/common/http";
 import { UniversitiesComponent } from './components/university/universities/universities.component';
 import { UniversityDetailsComponent } from './components/university/university-details/university-details.component';
@@ -25,7 +25,6 @@ import { UpdateProgrammeComponent } from './components/programme/update-programm
 import { DisciplinesComponent } from './components/discipline/disciplines/disciplines.component';
 import { DisciplineDetailsComponent } from './components/discipline/discipline-details/discipline-details.component';
 import { CreateDisciplineComponent } from './components/discipline/create-discipline/create-discipline.component';
-import { UpdateDisciplineComponent } from './components/discipline/update-discipline/update-discipline.component';
 import { ReviewsComponent } from './components/review/reviews/reviews.component';
 import { ReviewDetailsComponent } from './components/review/review-details/review-details.component';
 import { CreateReviewComponent } from './components/review/create-review/create-review.component';
@@ -37,6 +36,7 @@ import { NavbarComponent } from './components/main/navbar/navbar.component';
 import {MatDivider} from "@angular/material/divider";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {MatIcon} from "@angular/material/icon";
+import {MatCheckbox} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -56,7 +56,6 @@ import {MatIcon} from "@angular/material/icon";
     DisciplinesComponent,
     DisciplineDetailsComponent,
     CreateDisciplineComponent,
-    UpdateDisciplineComponent,
     ReviewsComponent,
     ReviewDetailsComponent,
     CreateReviewComponent,
@@ -81,7 +80,9 @@ import {MatIcon} from "@angular/material/icon";
     MatCardActions,
     MatSelect,
     MatOption,
-    MatIcon
+    MatIcon,
+    MatCheckbox,
+    FormsModule
   ],
   providers: [
     provideClientHydration(),
