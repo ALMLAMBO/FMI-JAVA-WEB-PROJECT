@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import { ReviewResponse } from '../../../dto/response/review-response';
 
 @Component({
   selector: 'app-reviews',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './reviews.component.scss'
 })
 export class ReviewsComponent {
+  @Input() reviews: ReviewResponse[];
 
 }
