@@ -14,4 +14,9 @@ export class FacultyService extends BaseService<FacultyResponse, FacultyInfoResp
     super(client);
     this.entityName = environment.entityNames.faculty;
   }
+  
+  getFacultiesForUniversity(universityId: string) {
+    return this.client
+      .get<FacultyResponse[]>(`${environment.baseUrl}/${environment.entityNames.faculty}/${universityId}/faculties`);
+  }
 }
