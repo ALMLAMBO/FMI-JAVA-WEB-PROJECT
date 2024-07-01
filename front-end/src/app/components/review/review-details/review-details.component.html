@@ -1,1 +1,148 @@
-<p>review-details works!</p>
+<mat-card
+        class="flex flex-col px-11 py-8 bg-white border-black border-solid border-[5px] w-auto rounded-[50px] max-md:px-5">
+    <mat-card-header>
+        <div class="w-full max-md:max-w-full">
+            <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+                <div class="flex flex-col w-[63%] max-md:ml-0 max-md:w-full">
+                    <div class="flex flex-col grow mt-5 max-md:mt-10">
+                        <div class="flex gap-5 mt-1.5">
+                            <div class="flex justify-center items-center py-0.5 bg-white">
+                                <mat-label>{{ review.courseRating }}</mat-label>
+                                <mat-icon fontIcon="star"></mat-icon>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 mt-1.5">
+                            <div class="flex justify-center items-center py-0.5 bg-white">
+                                <span>{{ review.lecturerRating }}</span>
+                                <mat-icon fontIcon="star"></mat-icon>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 mt-1.5">
+                            <div class="flex justify-center items-center py-0.5 bg-white">
+                                <mat-label>{{ review.assistantsRating }}</mat-label>
+                                <mat-icon fontIcon="star"></mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col ml-5 w-[37%] max-md:ml-0 max-md:w-full">
+                    <div
+                            class="flex gap-5 justify-center items-start px-5 py-5 w-full text-3xl font-semibold text-white whitespace-nowrap bg-indigo-600 rounded-3xl max-md:mt-10">
+                        <div class="flex-auto my-auto">{{ review.publishedAt }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="mt-3.5 text-3xl font-semibold text-black max-md:mr-2 max-md:max-w-full">
+            Коментар:
+        </div>
+        <div
+                class="items-start px-7 pt-8 pb-36 text-xs font-semibold whitespace-nowrap rounded-3xl bg-indigo-400 bg-opacity-30 text-black text-opacity-70 max-md:px-5 max-md:pb-10 max-md:mr-2 max-md:max-w-full">
+            {{ review.comment }}
+        </div>
+        <div class="max-md:mr-2 max-md:max-w-full">
+            <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+                <div class="flex flex-col w-[61%] max-md:ml-0 max-md:w-full">
+                    <div class="flex flex-col grow max-md:mt-10 max-md:max-w-full">
+                        <mat-label class="text-3xl font-semibold text-black max-md:max-w-full">Има:</mat-label>
+                        <div class="mt-1.5 max-md:max-w-full">
+                            <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+                                <div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
+                                    <div
+                                            class="flex flex-col grow justify-center text-xl font-semibold text-black whitespace-nowrap max-md:mt-2.5">
+                                        @if (review.hasExam) {
+                                            <div class="flex gap-5 bg-white">
+                                                <mat-icon fontIcon="school"></mat-icon>
+                                                <div class="my-auto">Изпит</div>
+                                            </div>
+                                        }
+
+                                        @if (review.hasProject) {
+                                            <div class="flex gap-5 bg-white">
+                                                <mat-icon fontIcon="school"></mat-icon>
+                                                <div class="my-auto">Проект</div>
+                                            </div>
+                                        }
+
+                                        @if(review.hasMidChecks) {
+                                            <div class="flex gap-5 px-1.5 bg-white">
+                                                <mat-icon fontIcon="school"></mat-icon>
+                                                <div class="my-auto">Контролни</div>
+                                            </div>
+                                        }
+
+                                        @if(review.hasHomeworks) {
+                                            <div class="flex gap-5 bg-white">
+                                                <mat-icon fontIcon="school"></mat-icon>
+                                                <div>Домашни<br/>работи</div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+                                    <div
+                                            class="flex flex-col grow justify-center text-xl font-semibold text-black whitespace-nowrap max-md:mt-2.5">
+
+                                        @if(review.hasOnlineClasses) {
+                                            <div class="flex gap-5 bg-white">
+                                                <mat-icon fontIcon="school"></mat-icon>
+                                                <div>Онлайн<br/>часове</div>
+                                            </div>
+                                        }
+
+                                        @if(review.hasBooks) {
+                                            <div class="flex gap-5 bg-white">
+                                                <mat-icon fontIcon="school"></mat-icon>
+                                                <div class="my-auto">Учебник</div>
+                                            </div>
+                                        }
+
+                                        @if(review.hasPresentations) {
+                                            <div class="flex gap-5 px-1.5 bg-white">
+                                                <mat-icon fontIcon="school"></mat-icon>
+                                                <div class="my-auto">Презентации</div>
+                                            </div>
+                                        }
+
+                                        @if(review.hasAdditionalMaterials) {
+                                            <div class="flex gap-5 px-1.5 bg-white">
+                                                <mat-icon fontIcon="school"></mat-icon>
+                                                <div>Допълнителни<br/>материали</div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col ml-5 w-[39%] max-md:ml-0 max-md:w-full">
+                    <div class="flex flex-col grow px-3.5 text-xl font-semibold text-black whitespace-nowrap max-md:mt-10">
+                        <mat-label class="text-3xl">Оценки:</mat-label>
+                        <div class="flex gap-5 py-0.5 pl-16 bg-white max-md:pl-5">
+                            <div class="my-auto">Заетост:</div>
+                            <div class="my-auto">{{ review.workLoad }}</div>
+                            <mat-icon fontIcon="star"></mat-icon>
+                        </div>
+                        <div class="flex gap-5 py-0.5 pl-12 bg-white max-md:pl-5">
+                            <div class="my-auto">Сложност:</div>
+                            <div class="my-auto">{{ review.difficulty }}</div>
+                        </div>
+                        <div class="flex gap-5 py-0.5 pl-11 bg-white max-md:pl-5">
+                            <div class="my-auto">Полезност:</div>
+                            <div class="my-auto">{{ review.usefulness }}</div>
+                            <mat-icon fontIcon="star"></mat-icon>
+                        </div>
+                        <div class="flex gap-5 py-0.5 bg-white">
+                            <div class="my-auto">Увлекателност:</div>
+                            <div class="my-auto">{{ review.usefulness }}</div>
+                            <mat-icon fontIcon="star"></mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

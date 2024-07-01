@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ReviewResponse} from "../../../dto/response/review-response";
+import {DisciplineService} from "../../../services/discipline.service";
 
 @Component({
   selector: 'app-review-details',
@@ -8,5 +9,4 @@ import {ReviewResponse} from "../../../dto/response/review-response";
 })
 export class ReviewDetailsComponent {
   @Input() review: ReviewResponse;
-
 }

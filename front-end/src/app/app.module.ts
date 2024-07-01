@@ -36,6 +36,7 @@ import { HomeComponent } from './components/main/home/home.component';
 import { NavbarComponent } from './components/main/navbar/navbar.component';
 import {MatDivider} from "@angular/material/divider";
 import {MatOption, MatSelect} from "@angular/material/select";
+import {MatIcon} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import {MatOption, MatSelect} from "@angular/material/select";
     MatDivider,
     MatCardActions,
     MatSelect,
-    MatOption
+    MatOption,
+    MatIcon
   ],
   providers: [
     provideClientHydration(),
