@@ -1,1 +1,20 @@
-<p>programmes works!</p>
+<div class="flex flex-row justify-evenly flex-wrap mx-4 my-4">
+    @for (programme of programmes; track programme) {
+        <mat-card class="w-1/5">
+            <mat-card-header>
+                <mat-card-title>{{ programme.title }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions>
+                <button mat-button>
+                    <a [routerLink]="['/universities', 
+                         this.universityId, 'faculties', 
+                         this.facultyId, 'programmes', 
+                         programme.idResponse]">
+                    
+                        Details
+                    </a>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    }
+</div>
