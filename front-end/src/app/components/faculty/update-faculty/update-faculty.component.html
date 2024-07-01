@@ -1,1 +1,39 @@
-<p>update-faculty works!</p>
+@if(facultyId) {
+    <div class="container">
+        <form [formGroup]="facultyForm" (ngSubmit)="submitFaculty()">
+            <h2 class="mx-4 my-4">Create Faculty</h2>
+
+            <div class="mx-4 my-4">
+                <mat-form-field>
+                    <mat-label>University</mat-label>
+                    <mat-label> {{ universityName }}</mat-label>
+                </mat-form-field>
+            </div>
+
+            <div class="mx-4 my-4">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </div>
+
+            <div class="mx-4">
+                <mat-form-field>
+                    <mat-label>Dean</mat-label>
+                    <input matInput formControlName="dean">
+                </mat-form-field>
+            </div>
+
+            <div class="mx-4 my-4">
+                <mat-form-field>
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="address">
+                </mat-form-field>
+            </div>
+
+            <div class="mx-4">
+                <button mat-flat-button color="primary" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+}
