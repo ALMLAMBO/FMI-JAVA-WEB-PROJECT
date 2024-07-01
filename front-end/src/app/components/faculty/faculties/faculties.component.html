@@ -1,1 +1,26 @@
-<p>faculties works!</p>
+<div class="flex flex-row justify-evenly flex-wrap mx-4 my-4">
+    @for (faculty of faculties; track faculty) {
+        <mat-card class="w-1/5">
+            <mat-card-header>
+                <mat-card-title>{{ faculty.name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div>
+                    <mat-divider></mat-divider>
+                </div>
+                <div>
+                    <mat-label>Dean: {{ faculty.dean }}</mat-label>
+                </div>
+
+                <div class="mt-1.5">
+                    <mat-label>Address: {{ faculty.address }}</mat-label>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>
+                    <a [routerLink]="['/universities', this.universityId, 'faculties', faculty.idResponse]">Details</a>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    }
+</div>
