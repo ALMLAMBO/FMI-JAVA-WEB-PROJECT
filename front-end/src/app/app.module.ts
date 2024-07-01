@@ -35,6 +35,7 @@ import { UserDetailsComponent } from './components/user/user-details/user-detail
 import { HomeComponent } from './components/main/home/home.component';
 import { NavbarComponent } from './components/main/navbar/navbar.component';
 import {MatDivider} from "@angular/material/divider";
+import {MatOption, MatSelect} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,9 @@ import {MatDivider} from "@angular/material/divider";
     MatCardHeader,
     MatCardContent,
     MatDivider,
-    MatCardActions
+    MatCardActions,
+    MatSelect,
+    MatOption
   ],
   providers: [
     provideClientHydration(),
