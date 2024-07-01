@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import { DisciplineResponse } from '../../../dto/response/discipline-response';
 
 @Component({
   selector: 'app-disciplines',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './disciplines.component.scss'
 })
 export class DisciplinesComponent {
+  @Input() disciplines!: DisciplineResponse[];
 
 }
