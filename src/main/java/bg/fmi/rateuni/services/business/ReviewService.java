@@ -50,14 +50,14 @@ public class ReviewService {
 
         Discipline discipline = disciplineCrudService.getDisciplineById(reviewRequest.getDisciplineId())
                 .orElseThrow(() -> new IllegalArgumentException("Discipline does not exist"));
-        user = userCrudService.getUserById(reviewRequest.getUserId())
-                .orElseThrow(() -> new IllegalArgumentException("User does not exist"));
+//        user = userCrudService.getUserById(reviewRequest.getUserId())
+//                .orElseThrow(() -> new IllegalArgumentException("User does not exist"));
         Review review = reviewMapper.mapFromCreateReviewRequest(reviewRequest);
         review.setDiscipline(discipline);
-        review.setUser(user);
+//        review.setUser(user);
         reviewCrudService.createUpdateReview(review);
-        reviewRequestCrudService.createUpdateReviewRequest(new ReviewRequest(
-                UUID.randomUUID(), RequestStatus.PENDING, review, user));
+//        reviewRequestCrudService.createUpdateReviewRequest(new ReviewRequest(
+//                UUID.randomUUID(), RequestStatus.PENDING, review, user));
 
         return new BaseResponse("Review submitted for additional check successfully");
     }
