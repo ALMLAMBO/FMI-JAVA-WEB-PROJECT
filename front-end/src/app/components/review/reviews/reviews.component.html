@@ -1,1 +1,8 @@
-<p>reviews works!</p>
+<div class="flex flex-row justify-center flex-wrap w-full">
+    @for(review of reviews; track review) {
+        <app-review-details class="my-4 mx-4 w-5/12"
+                            [review]="review">
+
+        </app-review-details>
+    }
+</div>

@@ -8,5 +8,4 @@ import { ReviewResponse } from '../../../dto/response/review-response';
 })
 export class ReviewsComponent {
   @Input() reviews: ReviewResponse[];
-
 }
